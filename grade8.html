@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grade 8 – GDevelop 5: Catch the Coin (Step-by-Step)</title>
+  <style>
+    :root {
+      --primary: #1976d2;
+      --primary-dark: #0d47a1;
+      --accent: #ff9800;
+      --success: #2e7d32;
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #546e7a;
+      --border: #e0e7ef;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      max-width: 920px;
+      margin: 0 auto;
+      line-height: 1.65;
+      padding: 24px 18px 60px;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 28px 24px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(25, 118, 210, 0.25);
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.85rem;
+      font-weight: 700;
+    }
+    header p {
+      margin: 0;
+      opacity: 0.95;
+      font-size: 1.05rem;
+    }
+    .goal-box {
+      background: #e8f5e9;
+      border-left: 6px solid var(--success);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0 28px;
+      font-size: 1.05rem;
+    }
+    .goal-box strong { color: var(--success); }
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.35rem;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin: 22px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      border-radius: 50%;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    ol, ul { padding-left: 22px; margin: 12px 0; }
+    li { margin: 8px 0; }
+    .tip {
+      background: #e3f2fd;
+      border-left: 5px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0 6px;
+      font-size: 0.95rem;
+    }
+    .tip strong { color: var(--primary-dark); }
+    .warning {
+      background: #fff8e1;
+      border-left: 5px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0 6px;
+      font-size: 0.95rem;
+    }
+    .assets-box {
+      background: #f3e5f5;
+      border-left: 6px solid #8e24aa;
+      padding: 18px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 22px 0;
+    }
+    .assets-box h2 { color: #6a1b9a; }
+    .assets-box a {
+      color: #6a1b9a;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    code {
+      background: #eceff1;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+      font-size: 0.92em;
+      color: #c62828;
+    }
+    .expression {
+      background: #263238;
+      color: #aed581;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      border-radius: 10px;
+      margin: 12px 0 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .video-wrap {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .ext-box {
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      border: 1px solid #ffb74d;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin: 28px 0;
+    }
+    .ext-box h2 { color: #e65100; }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    a { color: var(--primary); }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li::before {
+      content: "☐ ";
+      color: var(--primary);
+      font-weight: bold;
+    }
+    kbd {
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      body { padding: 16px 12px 40px; }
+      header h1 { font-size: 1.45rem; }
+      iframe { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎮 Grade 8 – GDevelop 5</h1>
+  <p>Create Your First Game: Catch the Coin</p>
+</header>
+
+<div class="goal-box">
+  <strong>Learning Goal:</strong> By the end of this lesson you will have a playable game where a character moves with the arrow keys, collects coins, and shows a live score. You will understand objects, behaviors, variables, and events — the core of GDevelop.
+</div>
+
+<div class="warning">
+  <strong>Important – Use the Desktop App only</strong><br>
+  You must use the <strong>GDevelop desktop application</strong> that is already installed on your computer.<br>
+  Do <strong>not</strong> use the online web editor (editor.gdevelop.io) for this lesson.
+</div>
+
+<!-- ASSETS SECTION -->
+<div class="assets-box">
+  <h2>📦 Free Assets (download these first)</h2>
+  <p>Before you start, download free game images. All of these are <strong>completely free</strong> and legal to use (CC0 / public domain).</p>
+  
+  <p><strong>Recommended (easiest for beginners):</strong></p>
+  <ul>
+    <li>
+      <strong>Kenney.nl – Free Game Assets</strong> (best choice)<br>
+      Official site: <a href="https://kenney.nl/assets" target="_blank">https://kenney.nl/assets</a><br>
+      Look for packs such as:
+      <ul>
+        <li>“New Platformer Pack” or “Platformer Pack”</li>
+        <li>Any pack that contains characters, coins, and backgrounds</li>
+      </ul>
+      Download → unzip the folder → keep the PNG images ready.
+    </li>
+  </ul>
+
+  <p><strong>Other good free sources:</strong></p>
+  <ul>
+    <li>OpenGameArt.org – search “coin” or “character” (filter by CC0): <a href="https://opengameart.org" target="_blank">https://opengameart.org</a></li>
+    <li>itch.io free assets (filter by free + CC0): <a href="https://itch.io/game-assets/free" target="_blank">https://itch.io/game-assets/free</a></li>
+  </ul>
+
+  <p class="tip" style="margin-top:14px;">
+    <strong>How to use the images in GDevelop:</strong><br>
+    When you create a Sprite → click “Add an animation” → choose “Browse” or “Select image from your computer” and pick the PNG file you downloaded.
+  </p>
+</div>
+
+<div class="video-wrap">
+  <h2>📺 Watch this first (optional but helpful)</h2>
+  <p>A short overview of making a simple collectible game in GDevelop. Then follow the written steps carefully.</p>
+  <iframe src="https://www.youtube.com/embed/fbVn5qrSHSY" allowfullscreen title="GDevelop beginner collect coin overview"></iframe>
+  <p style="font-size:0.9rem;color:var(--muted);margin:0;">If the video does not load, just follow the steps below — they are complete on their own.</p>
+</div>
+
+<!-- STEP 1 -->
+<div class="step">
+  <h2><span class="step-number">1</span> Open the GDevelop desktop app and create the project</h2>
+  <ol>
+    <li>Open the <strong>GDevelop desktop application</strong> that is installed on your computer.</li>
+    <li>On the home screen click <strong>Create a new project</strong>.</li>
+    <li>Choose <strong>Empty game</strong> (not a template).</li>
+    <li>Name the project <code>CatchTheCoin</code>.</li>
+    <li>Choose a folder on your computer to save the project and click <strong>Create project</strong>.</li>
+  </ol>
+  <div class="tip"><strong>✔ Check:</strong> You should see an empty scene. The Objects panel is usually on the right side of the screen.</div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <h2><span class="step-number">2</span> Add a Background</h2>
+  <ol>
+    <li>In the <strong>Objects</strong> panel (right side) click the <strong>+</strong> button (or “Add a new object”).</li>
+    <li>Select <strong>Sprite</strong>.</li>
+    <li>Name it <code>Background</code>.</li>
+    <li>Click <strong>Add an animation</strong> → then choose an image from the assets you downloaded (or use the built-in Asset Store if available).</li>
+    <li>Click <strong>Apply</strong>.</li>
+    <li>Drag the <code>Background</code> object from the Objects panel onto the big scene area.</li>
+    <li>Stretch it (pull the corners) so it fills the whole window.</li>
+  </ol>
+  <div class="tip"><strong>Tip:</strong> You can right-click the object later and choose “Edit object” if you want to change the image.</div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <h2><span class="step-number">3</span> Add the Player character</h2>
+  <ol>
+    <li>Click <strong>+</strong> again → choose <strong>Sprite</strong>.</li>
+    <li>Name it <code>Player</code>.</li>
+    <li>Add an animation and select a character image from the assets you downloaded (look for a person, hero, robot, etc.).</li>
+    <li>Click <strong>Apply</strong>.</li>
+    <li>Drag the <code>Player</code> onto the scene, somewhere in the lower or middle area.</li>
+  </ol>
+  <div class="tip"><strong>Tip:</strong> Make the player a reasonable size — not tiny and not covering the whole screen. You can resize it by dragging the corners.</div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <h2><span class="step-number">4</span> Make the Player move (Top-Down Movement)</h2>
+  <ol>
+    <li>Double-click the <code>Player</code> object in the Objects panel (or right-click → Edit object).</li>
+    <li>Go to the <strong>Behaviors</strong> tab.</li>
+    <li>Click <strong>Add a behavior</strong>.</li>
+    <li>Search for or select <strong>Top-down movement (4 or 8 directions)</strong>.</li>
+    <li>Leave the default settings for now (Default controls = arrow keys, diagonals allowed). You can lower Max speed later if it feels too fast.</li>
+    <li>Click <strong>Apply</strong>.</li>
+    <li>Click the green <strong>Preview</strong> button (▶) at the top.</li>
+    <li>Use the <strong>arrow keys</strong> on your keyboard. The player should move smoothly!</li>
+  </ol>
+  <div class="warning"><strong>Common mistake:</strong> If nothing moves, make sure you added the behavior to the <em>Player</em> object (not the Background) and that you clicked Apply.</div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <h2><span class="step-number">5</span> Add a Coin</h2>
+  <ol>
+    <li>Create another Sprite object named <code>Coin</code>.</li>
+    <li>Choose a coin / gem / star image from the assets you downloaded.</li>
+    <li>Drag <strong>one</strong> Coin instance onto the scene, away from the Player.</li>
+  </ol>
+  <div class="tip"><strong>Later:</strong> You can hold <kbd>Ctrl</kbd> (or <kbd>Cmd</kbd> on Mac) and drag a coin to quickly duplicate more of them.</div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <h2><span class="step-number">6</span> Create the Score text and variable</h2>
+  <ol>
+    <li>Click <strong>+</strong> → choose <strong>Text</strong> object.</li>
+    <li>Name it <code>ScoreText</code>.</li>
+    <li>In the text properties set the initial text to: <code>Score: 0</code></li>
+    <li>Make the font size bigger (e.g. 40–60) and choose a clear color so it is easy to read.</li>
+    <li>Click <strong>Apply</strong> and place the text near the top of the scene (or top-left).</li>
+  </ol>
+  <p><strong>Create the Score variable:</strong></p>
+  <ol start="6">
+    <li>In the scene editor, open the <strong>Scene properties</strong> or use the Project manager to find Scene variables.</li>
+    <li>Add a new variable:
+      <ul>
+        <li>Name: <code>Score</code></li>
+        <li>Type: Number</li>
+        <li>Initial value: <code>0</code></li>
+      </ul>
+    </li>
+  </ol>
+  <div class="tip"><strong>✔ Check:</strong> You now have a text object that says “Score: 0” and a scene variable called Score that starts at 0.</div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step">
+  <h2><span class="step-number">7</span> Add the collection events</h2>
+  <ol>
+    <li>Click the <strong>Events</strong> tab (next to the Scene tab).</li>
+    <li>Click <strong>Add a new empty event</strong> (or the + button for events).</li>
+    <li><strong>Condition</strong> (left side):
+      <ul>
+        <li>Click “Add condition”.</li>
+        <li>Choose <strong>Collision</strong> → “Collision” (or search “collision”).</li>
+        <li>First object: <code>Player</code></li>
+        <li>Second object: <code>Coin</code></li>
+        <li>Click OK / Apply.</li>
+      </ul>
+    </li>
+    <li><strong>Actions</strong> (right side) — add these three actions one after another in the <em>same</em> event:
+      <ol type="a">
+        <li><strong>Delete an object</strong> → select <code>Coin</code> (this removes only the coin that was touched).</li>
+        <li><strong>Change the number of a scene variable</strong> (or “Value of a scene variable”):
+          <ul>
+            <li>Variable: <code>Score</code></li>
+            <li>Modification: <strong>+ (add)</strong></li>
+            <li>Value: <code>1</code></li>
+          </ul>
+        </li>
+        <li><strong>Modify the text</strong> of <code>ScoreText</code>:
+          <ul>
+            <li>Modification: <strong>= (set to)</strong></li>
+            <li>Value (expression):</li>
+          </ul>
+          <div class="expression">"Score: " + ToString(Variable(Score))</div>
+          <p style="margin:6px 0 0;font-size:0.9rem;">Type it carefully. The quotes and the + sign are important. You can also use the expression editor to build it.</p>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <div class="warning"><strong>Important:</strong> All three actions must be inside the <em>same</em> event that has the collision condition. Do not create three separate events.</div>
+</div>
+
+<!-- STEP 8 -->
+<div class="step">
+  <h2><span class="step-number">8</span> Test your game!</h2>
+  <ol>
+    <li>Click the green <strong>Preview</strong> button (▶).</li>
+    <li>Move the player with the arrow keys.</li>
+    <li>Touch the coin → it should disappear and the score should become <strong>Score: 1</strong>.</li>
+  </ol>
+  <div class="tip"><strong>If the score does not update:</strong> Double-check the expression in the text action and make sure the variable is a scene variable named exactly <code>Score</code>.</div>
+</div>
+
+<!-- EXTENSION -->
+<div class="ext-box">
+  <h2>🚀 Extension challenges (do these if you finish early)</h2>
+  <ul class="checklist">
+    <li>Add <strong>10 coins</strong> (Ctrl/Cmd + drag to duplicate). Collect them all!</li>
+    <li>Play a sound when a coin is collected:
+      <ul style="list-style:disc;margin-top:6px;">
+        <li>In the same collision event add the action <strong>Play a sound</strong>.</li>
+        <li>You can find free sound effects on Kenney.nl or OpenGameArt as well.</li>
+      </ul>
+    </li>
+    <li>Show “You Win!” when the player has collected all coins:
+      <ul style="list-style:disc;margin-top:6px;">
+        <li>Create another Text object named <code>WinText</code> with the text “You Win!”.</li>
+        <li>Add a new event: Condition → Number of objects → <code>Coin</code> is equal to 0 (or Score = 10).</li>
+        <li>Action: Show / change the WinText so the player sees the message.</li>
+      </ul>
+    </li>
+    <li>Bonus: Make the player a little faster or slower by editing the Top-down movement Max speed.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h2>📚 Where to learn more</h2>
+  <ul>
+    <li>Official GDevelop – Collectible Coins tutorial: <a href="https://wiki.gdevelop.io/gdevelop5/tutorials/platformer/part-5/" target="_blank">wiki.gdevelop.io – Collectible Coins</a></li>
+    <li>Top-down movement docs: <a href="https://wiki.gdevelop.io/gdevelop5/behaviors/topdown/" target="_blank">Official Top-Down Movement page</a></li>
+    <li>Free assets: <a href="https://kenney.nl/assets" target="_blank">kenney.nl/assets</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>Made for Grade 8 students • GDevelop 5 Desktop App • Catch the Coin lesson</p>
+  <p>Follow the steps in order. Ask your teacher or a classmate if you get stuck on a step.</p>
+  <p style="margin-top:12px;">Feel better soon! 💙</p>
+</footer>
+
+</body>
+</html>
