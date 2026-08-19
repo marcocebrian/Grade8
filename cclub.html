@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYP Coding Club — Welcome Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Tektur:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES (THEME)
+           8-Bit Orbit — arcade navy + neon trio
+           =========================================== */
+        :root {
+            --dark-void: #0A0E27;
+            --deep-navy: #0F1B3D;
+            --neon-cyan: #5EDCF4;
+            --neon-pink: #F0A6CA;
+            --neon-yellow: #F4D03F;
+            --soft-lavender: #E2D5F2;
+            --white: #FFFFFF;
+            --body-on-dark: rgba(255, 255, 255, 0.78);
+            --body-on-light: rgba(15, 27, 61, 0.78);
+
+            --stage-bg: #050714;
+            --slide-bg: #0A0E27;
+
+            --font-display: "Tektur", cursive;
+            --font-body: "Chakra Petch", sans-serif;
+            --font-hud: "Space Mono", monospace;
+
+            --pixel: 4px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-slide: cubic-bezier(0.22, 1, 0.36, 1);
+            --duration-normal: 0.6s;
+
+            --shadow-hero: 4px 4px 0 var(--neon-yellow), 8px 8px 0 var(--deep-navy);
+            --shadow-stat: 3px 3px 0 var(--deep-navy);
+            --shadow-l: 4px 0 0 0 var(--deep-navy), 0 4px 0 0 var(--deep-navy), 4px 4px 0 0 var(--deep-navy);
+            --shadow-btn: 4px 0 0 0 var(--deep-navy), 0 4px 0 0 var(--deep-navy), 4px 4px 0 0 var(--deep-navy), 8px 4px 0 0 var(--neon-yellow), 4px 8px 0 0 var(--neon-yellow), 8px 8px 0 0 var(--neon-yellow);
+            --shadow-btn-pink: 4px 0 0 0 var(--deep-navy), 0 4px 0 0 var(--deep-navy), 4px 4px 0 0 var(--deep-navy), 8px 4px 0 0 var(--neon-cyan), 4px 8px 0 0 var(--neon-cyan), 8px 8px 0 0 var(--neon-cyan);
+            --shadow-card: 6px 6px 0 rgba(15, 27, 61, 0.18);
+            --shadow-featured: 8px 8px 0 var(--neon-yellow);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ===========================================
+           FIXED 16:9 STAGE: MANDATORY BASE STYLES
+           Include this ENTIRE file in every presentation.
+           Slides are authored at 1920×1080 and scaled as a whole.
+           =========================================== */
+
+        /* 1. Lock the browser viewport */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: var(--stage-bg, #000);
+        }
+
+        /* 2. Full-window deck viewport */
+        .deck-viewport {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            background: var(--stage-bg, #000);
+        }
+
+        /* 3. Fixed 16:9 design canvas.
+           JavaScript sets transform: translate(...) scale(...). */
+        .deck-stage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            transform-origin: 0 0;
+            background: var(--slide-bg, #fff);
+        }
+
+        /* 4. Slides stack inside the fixed stage.
+           Content must be laid out at 1920×1080, not reflowed per device. */
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            background: var(--slide-bg, #fff);
+        }
+
+        .slide.active,
+        .slide.visible {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+        }
+
+        /* 5. Keep media inside authored slide bounds */
+        img,
+        video,
+        canvas,
+        svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* 6. Presentation chrome stays outside the slide design system */
+        .deck-controls {
+            position: fixed;
+            left: 50%;
+            bottom: 22px;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        /* 7. Print one fixed-size slide per page */
+        @media print {
+            html,
+            body {
+                width: 1920px;
+                height: auto;
+                overflow: visible;
+                background: #fff;
+            }
+
+            .deck-viewport {
+                position: static;
+                overflow: visible;
+                background: #fff;
+            }
+
+            .deck-stage {
+                position: static;
+                width: auto;
+                height: auto;
+                transform: none !important;
+                background: none;
+            }
+
+            .slide {
+                position: relative;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                width: 1920px;
+                height: 1080px;
+                break-after: page;
+                page-break-after: always;
+            }
+
+            .slide:last-child {
+                break-after: auto;
+                page-break-after: auto;
+            }
+
+            .deck-controls {
+                display: none !important;
+            }
+        }
+
+        /* 8. Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+
+        /* ===========================================
+           GLOBAL DECK FEEL
+           =========================================== */
+        body { cursor: crosshair; }
+
+        /* ===========================================
+           ATMOSPHERE — scanlines, grain, CRT, grid
+           Always on. Identity of the system.
+           =========================================== */
+        .fx {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 40;
+        }
+        .fx-grain {
+            position: absolute;
+            inset: 0;
+            z-index: 49;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+        .fx-scan {
+            position: absolute;
+            inset: 0;
+            z-index: 50;
+            mix-blend-mode: multiply;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0 2px,
+                rgba(10, 14, 39, 0.05) 2px 4px
+            );
+        }
+        .fx-crt {
+            position: absolute;
+            inset: 0;
+            z-index: 51;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(10, 14, 39, 0.32) 100%);
+        }
+        .slide.surface-pink .fx-crt,
+        .slide.surface-cyan .fx-crt,
+        .slide.surface-lavender .fx-crt {
+            opacity: 0.35;
+        }
+        .fx-stars {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-cyan);
+            animation: twinkle 3s steps(2, end) infinite;
+        }
+        .star.pink { background: var(--soft-lavender); }
+        .star.yellow { background: var(--neon-yellow); }
+        .star.white { background: #fff; }
+
+        @keyframes twinkle {
+            50% { opacity: 0.25; }
+        }
+
+        /* ===========================================
+           SURFACE VARIANTS
+           Dark void (default) vs colored grids
+           =========================================== */
+        .slide.surface-dark {
+            background-color: var(--dark-void);
+            background-image:
+                linear-gradient(rgba(94, 220, 244, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(94, 220, 244, 0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--white);
+        }
+        .slide.surface-pink {
+            background-color: var(--deep-navy);
+            background-image:
+                linear-gradient(rgba(15, 27, 61, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 27, 61, 0.12) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--deep-navy);
+        }
+        .slide.surface-cyan {
+            background-color: var(--neon-cyan);
+            background-image:
+                linear-gradient(rgba(15, 27, 61, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 27, 61, 0.12) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--deep-navy);
+        }
+        .slide.surface-lavender {
+            background-color: var(--soft-lavender);
+            background-image:
+                linear-gradient(rgba(15, 27, 61, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 27, 61, 0.12) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--deep-navy);
+        }
+
+        /* ===========================================
+           PERSISTENT SLIDE CHROME
+           Brackets, HUD counter, nav rail
+           =========================================== */
+        .bracket {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 4px solid var(--neon-cyan);
+            z-index: 20;
+            pointer-events: none;
+        }
+        .bracket.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+        .bracket.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; }
+        .bracket.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; }
+        .bracket.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+        .surface-pink .bracket,
+        .surface-cyan .bracket,
+        .surface-lavender .bracket {
+            border-color: var(--deep-navy);
+        }
+
+        .hud-counter {
+            position: absolute;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%);
+            z-index: 30;
+            background: rgba(10, 14, 39, 0.78);
+            color: var(--neon-cyan);
+            font-family: var(--font-hud);
+            font-size: 16px;
+            letter-spacing: 0.16em;
+            padding: 8px 16px;
+            pointer-events: none;
+        }
+        .surface-pink .hud-counter,
+        .surface-cyan .hud-counter,
+        .surface-lavender .hud-counter {
+            background: var(--deep-navy);
+        }
+
+        .nav-hint {
+            position: absolute;
+            right: 72px;
+            bottom: 32px;
+            z-index: 30;
+            font-family: var(--font-hud);
+            font-size: 14px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(94, 220, 244, 0.5);
+            pointer-events: none;
+        }
+        .surface-pink .nav-hint,
+        .surface-cyan .nav-hint,
+        .surface-lavender .nav-hint {
+            color: rgba(15, 27, 61, 0.45);
+        }
+
+        .nav-rail {
+            position: absolute;
+            right: 36px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--neon-cyan);
+            background: transparent;
+            padding: 0;
+            cursor: crosshair;
+        }
+        .nav-dot.active {
+            background: var(--neon-cyan);
+            box-shadow: inset 0 0 0 2px var(--dark-void);
+        }
+        .surface-pink .nav-dot,
+        .surface-cyan .nav-dot,
+        .surface-lavender .nav-dot {
+            border-color: var(--deep-navy);
+        }
+        .surface-pink .nav-dot.active,
+        .surface-cyan .nav-dot.active,
+        .surface-lavender .nav-dot.active {
+            background: var(--deep-navy);
+            box-shadow: inset 0 0 0 2px transparent;
+        }
+
+        /* ===========================================
+           TYPE + SMALL CHROME
+           Tektur display / Chakra body / Space Mono HUD
+           =========================================== */
+        .label-pill {
+            display: inline-block;
+            background: var(--deep-navy);
+            color: var(--neon-yellow);
+            font-family: var(--font-hud);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            line-height: 1;
+        }
+        .label-pill.cyan { color: var(--neon-cyan); }
+        .label-pill.pink { color: var(--neon-pink); }
+
+        .eyebrow {
+            font-family: var(--font-hud);
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+        }
+        .surface-pink .eyebrow,
+        .surface-cyan .eyebrow,
+        .surface-lavender .eyebrow {
+            color: var(--deep-navy);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        p, li {
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.55;
+        }
+
+        .hero-title {
+            font-size: 124px;
+            font-weight: 900;
+            line-height: 0.92;
+            color: var(--neon-cyan);
+            text-shadow: var(--shadow-hero);
+        }
+
+        .section-title {
+            font-size: 64px;
+            line-height: 1.05;
+            font-weight: 800;
+        }
+        .surface-dark .section-title { color: var(--neon-cyan); }
+        .surface-pink .section-title,
+        .surface-cyan .section-title,
+        .surface-lavender .section-title { color: var(--deep-navy); }
+
+        .lede {
+            font-size: 30px;
+            line-height: 1.45;
+            max-width: 1100px;
+        }
+        .surface-dark .lede { color: var(--body-on-dark); }
+        .surface-pink .lede,
+        .surface-cyan .lede,
+        .surface-lavender .lede { color: var(--body-on-light); }
+
+        .body-copy {
+            font-size: 28px;
+        }
+        .surface-dark .body-copy { color: var(--body-on-dark); }
+        .surface-pink .body-copy,
+        .surface-cyan .body-copy,
+        .surface-lavender .body-copy { color: var(--body-on-light); }
+
+        /* ===========================================
+           LAYOUT SHELL
+           =========================================== */
+        .slide-content {
+            position: absolute;
+            inset: 72px 96px 88px 96px;
+            z-index: 10;
+        }
+
+        .pixel-btn {
+            display: inline-block;
+            background: var(--neon-cyan);
+            color: var(--deep-navy);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 16px 36px;
+            box-shadow: var(--shadow-btn);
+            border: 0;
+        }
+        .pixel-btn.pink {
+            background: var(--neon-yellow);
+            box-shadow: var(--shadow-btn-pink);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 2px solid var(--neon-yellow);
+            color: var(--neon-yellow);
+            font-family: var(--font-hud);
+            font-size: 16px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 10px 16px;
+        }
+
+        .quote-line {
+            width: 60px;
+            height: 4px;
+            background: var(--neon-yellow);
+            box-shadow: 4px 4px 0 var(--deep-navy);
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           Trigger via .visible class on the active slide
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide.visible .d1 { transition-delay: 0.08s; }
+        .slide.visible .d2 { transition-delay: 0.18s; }
+        .slide.visible .d3 { transition-delay: 0.30s; }
+        .slide.visible .d4 { transition-delay: 0.42s; }
+        .slide.visible .d5 { transition-delay: 0.54s; }
+        .slide.visible .d6 { transition-delay: 0.66s; }
+
+        .reveal-boot {
+            opacity: 0;
+            filter: brightness(2.4);
+            transition: opacity 0.55s steps(7, end), filter 0.55s steps(7, end);
+        }
+        .slide.visible .reveal-boot {
+            opacity: 1;
+            filter: none;
+        }
+
+        /* ===========================================
+           SLIDE 1 — TITLE
+           =========================================== */
+        .title-kicker {
+            margin-bottom: 28px;
+        }
+        .title-stack {
+            margin: 0 0 28px;
+        }
+        .title-tag {
+            font-size: 32px;
+            color: var(--soft-lavender);
+            margin-bottom: 36px;
+        }
+        .title-tag .blink {
+            display: inline-block;
+            width: 16px;
+            height: 30px;
+            margin-left: 10px;
+            background: var(--neon-yellow);
+            vertical-align: -4px;
+            animation: blink 1s steps(1) infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .badge-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .pixel-face {
+            position: absolute;
+            right: 80px;
+            top: 220px;
+            width: 280px;
+            height: 280px;
+            background: var(--deep-navy);
+            border: 4px solid var(--neon-cyan);
+            box-shadow: var(--shadow-featured);
+        }
+        .pixel-face .eye {
+            position: absolute;
+            top: 84px;
+            width: 36px;
+            height: 36px;
+            background: var(--neon-cyan);
+        }
+        .pixel-face .eye.l { left: 64px; }
+        .pixel-face .eye.r { right: 64px; }
+        .pixel-face .mouth {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            bottom: 72px;
+            height: 20px;
+            background: var(--neon-yellow);
+        }
+        .pixel-face .pixel {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--neon-yellow);
+        }
+
+        /* ===========================================
+           SLIDE 2 — WHAT THIS CLUB IS
+           =========================================== */
+        .rule-list {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+        }
+        .rule-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(15, 27, 61, 0.2);
+            padding: 32px 28px 28px;
+            min-height: 280px;
+        }
+        .rule-card .num {
+            font-family: var(--font-display);
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--deep-navy);
+            text-shadow: var(--shadow-stat);
+            margin-bottom: 16px;
+        }
+        .rule-card h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .rule-card p {
+            font-size: 24px;
+            color: var(--body-on-light);
+        }
+        .corner-in {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 4px solid var(--deep-navy);
+        }
+        .corner-in.tl { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .corner-in.br { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+        /* ===========================================
+           SLIDE 3 — TODAY
+           =========================================== */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-left: 8px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 18px;
+            top: 16px;
+            bottom: 28px;
+            width: 4px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--neon-cyan) 0 16px,
+                transparent 16px 24px
+            );
+        }
+        .t-item {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+        .node {
+            width: 24px;
+            height: 24px;
+            margin: 12px 0 0 8px;
+            background: var(--neon-cyan);
+            border: 4px solid var(--deep-navy);
+            position: relative;
+            z-index: 1;
+        }
+        .t-item:first-child .node { background: var(--neon-yellow); }
+        .t-copy {
+            padding: 4px 0 12px;
+        }
+        .t-copy .step {
+            font-family: var(--font-hud);
+            font-size: 16px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neon-yellow);
+            margin-bottom: 6px;
+        }
+        .t-copy h3 {
+            font-size: 36px;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .t-copy p {
+            font-size: 26px;
+            color: var(--body-on-dark);
+            max-width: 1200px;
+        }
+
+        /* ===========================================
+           SLIDE 4 — THREE STATIONS
+           =========================================== */
+        .station-grid {
+            margin-top: 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+        }
+        .station {
+            min-height: 520px;
+            padding: 32px 28px;
+            border: 4px solid var(--deep-navy);
+            box-shadow: 8px 8px 0 var(--deep-navy);
+            display: flex;
+            flex-direction: column;
+        }
+        .station.s-java { background: var(--neon-cyan); }
+        .station.s-elec {
+            background: var(--deep-navy);
+            box-shadow: 8px 8px 0 rgba(10, 14, 39, 0.45);
+        }
+        .station.s-elec .code,
+        .station.s-elec .foot { color: var(--neon-yellow); }
+        .station.s-elec h3 { color: var(--neon-cyan); }
+        .station.s-elec p { color: rgba(255, 255, 255, 0.78); }
+        .station.s-print { background: var(--neon-yellow); }
+        .station .code {
+            font-family: var(--font-hud);
+            font-size: 16px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+        }
+        .station h3 {
+            font-size: 40px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            color: var(--deep-navy);
+        }
+        .station p {
+            font-size: 26px;
+            color: rgba(15, 27, 61, 0.8);
+            line-height: 1.45;
+        }
+        .station .foot {
+            margin-top: auto;
+            padding-top: 24px;
+            font-family: var(--font-hud);
+            font-size: 16px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--deep-navy);
+        }
+
+        /* ===========================================
+           SLIDES 5–7 — TEAM DEEP DIVES
+           =========================================== */
+        .team-layout {
+            display: grid;
+            grid-template-columns: 1fr 520px;
+            gap: 48px;
+            height: 100%;
+            align-items: start;
+        }
+        .team-kicker { margin-bottom: 20px; }
+        .team-layout h2 { margin-bottom: 20px; }
+        .do-list {
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .do-item {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            gap: 16px;
+            align-items: start;
+            font-size: 28px;
+        }
+        .plus {
+            color: var(--neon-cyan);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 28px;
+            line-height: 1.2;
+        }
+        .surface-pink .plus,
+        .surface-lavender .plus { color: var(--deep-navy); }
+
+        .stat-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 12px;
+        }
+        .stat-block {
+            position: relative;
+            background: rgba(94, 220, 244, 0.08);
+            border: 2px solid rgba(94, 220, 244, 0.28);
+            padding: 28px 28px 24px;
+        }
+        .surface-pink .stat-block,
+        .surface-lavender .stat-block {
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(15, 27, 61, 0.2);
+        }
+        .stat-block .n {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--neon-cyan);
+            text-shadow: var(--shadow-stat);
+            margin-bottom: 10px;
+        }
+        .surface-pink .stat-block .n,
+        .surface-lavender .stat-block .n {
+            color: var(--deep-navy);
+        }
+        .stat-block .l {
+            font-family: var(--font-hud);
+            font-size: 16px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--neon-pink);
+        }
+        .surface-pink .stat-block .l { color: var(--deep-navy); }
+        .surface-lavender .stat-block .l { color: rgba(15, 27, 61, 0.65); }
+        .stat-block .corner-in { border-color: var(--neon-cyan); }
+        .surface-pink .stat-block .corner-in,
+        .surface-lavender .stat-block .corner-in { border-color: var(--deep-navy); }
+
+        .fit-note {
+            margin-top: 32px;
+        }
+        .fit-note p {
+            font-size: 26px;
+            margin-top: 14px;
+            max-width: 920px;
+        }
+
+        /* ===========================================
+           SLIDE 8 — CAPTAINS
+           =========================================== */
+        .cap-hero {
+            display: flex;
+            align-items: flex-end;
+            gap: 36px;
+            margin-bottom: 36px;
+        }
+        .big-03 {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 160px;
+            line-height: 0.8;
+            color: var(--neon-yellow);
+            text-shadow: var(--shadow-hero);
+        }
+        .cap-copy h2 { margin: 0 0 12px; }
+        .duty-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        .duty {
+            position: relative;
+            background: rgba(94, 220, 244, 0.08);
+            border: 2px solid rgba(94, 220, 244, 0.22);
+            padding: 28px 24px 24px;
+            min-height: 280px;
+        }
+        .duty h3 {
+            font-size: 26px;
+            color: var(--white);
+            margin: 16px 0 12px;
+        }
+        .duty p {
+            font-size: 22px;
+            color: var(--body-on-dark);
+        }
+        .duty .tag {
+            font-family: var(--font-hud);
+            font-size: 14px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neon-yellow);
+        }
+
+        /* ===========================================
+           SLIDE 9 — CHOOSE / CLOSE
+           =========================================== */
+        .close-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            height: 100%;
+        }
+        .choose-list {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .choose-item {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .choose-item .sq {
+            width: 64px;
+            height: 64px;
+            background: var(--neon-yellow);
+            color: var(--deep-navy);
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-l);
+        }
+        .choose-item h3 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        .choose-item p {
+            font-size: 24px;
+            color: var(--body-on-light);
+        }
+        .next-panel {
+            background: var(--deep-navy);
+            color: var(--white);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-featured);
+            position: relative;
+            align-self: stretch;
+        }
+        .next-panel .label-pill { margin-bottom: 24px; }
+        .next-panel ol {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .next-panel li {
+            font-size: 26px;
+            color: var(--body-on-dark);
+        }
+        .next-panel li strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            margin-bottom: 4px;
+        }
+        .horizon {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 88px;
+            z-index: 5;
+            pointer-events: none;
+            background:
+                linear-gradient(to top, rgba(10, 14, 39, 0.25), transparent),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(15, 27, 61, 0.28) 0 48px,
+                    rgba(15, 27, 61, 0.12) 48px 88px,
+                    rgba(15, 27, 61, 0.35) 88px 140px
+                );
+            clip-path: polygon(0 100%, 0 62%, 8% 48%, 16% 70%, 24% 40%, 34% 66%, 44% 28%, 54% 58%, 64% 36%, 74% 64%, 84% 22%, 92% 54%, 100% 30%, 100% 100%);
+        }
+
+        /* ===========================================
+           INLINE EDITING CHROME (outside the stage)
+           JS-controlled visibility — no sibling selector
+           =========================================== */
+        .edit-hotzone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            z-index: 10000;
+            cursor: pointer;
+        }
+        .edit-toggle {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10001;
+            background: var(--deep-navy);
+            color: var(--neon-yellow);
+            border: 2px solid var(--neon-cyan);
+            font-family: var(--font-hud);
+            font-size: 13px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .edit-toggle.show,
+        .edit-toggle.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        body.editing [contenteditable="true"] {
+            outline: 2px dashed var(--neon-yellow);
+            outline-offset: 4px;
+        }
+        .edit-banner {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10002;
+            background: var(--neon-yellow);
+            color: var(--deep-navy);
+            font-family: var(--font-hud);
+            font-size: 13px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            display: none;
+        }
+        body.editing .edit-banner { display: block; }
+    </style>
+</head>
+<body>
+    <div class="edit-hotzone" title="Edit mode"></div>
+    <button class="edit-toggle" id="editToggle" title="Edit mode (E)">Edit</button>
+    <div class="edit-banner">Edit mode · click text · Ctrl/Cmd+S to save</div>
+
+    <div class="deck-viewport">
+        <main class="deck-stage" id="deckStage">
+
+            <!-- ========== SLIDE 01 TITLE ========== -->
+            <section class="slide surface-dark active" data-slide="1">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-stars" data-stars></div>
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content">
+                    <p class="eyebrow title-kicker reveal-boot d1">Sys.ready // Welcome_day</p>
+                    <h1 class="hero-title title-stack reveal d2">MYP<br>Coding Club</h1>
+                    <p class="title-tag reveal d3">Insert yourself. Choose a station.<span class="blink"></span></p>
+                    <div class="badge-row reveal d4">
+                        <span class="hero-badge">Java</span>
+                        <span class="hero-badge">Electronics</span>
+                        <span class="hero-badge">3D Modeling</span>
+                    </div>
+                    <div class="pixel-face reveal d5" aria-hidden="true">
+                        <span class="eye l"></span>
+                        <span class="eye r"></span>
+                        <span class="mouth"></span>
+                        <span class="pixel" style="top:16px;left:16px;"></span>
+                        <span class="pixel" style="bottom:16px;right:16px;"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 02 WHAT THIS IS ========== -->
+            <section class="slide surface-lavender" data-slide="2">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content">
+                    <span class="label-pill reveal d1">Club briefing</span>
+                    <h2 class="section-title reveal d2" style="margin-top:24px;">This is a makerspace.</h2>
+                    <p class="lede reveal d3" style="margin-top:20px;">Three teams. One room. You pick a craft and stay with it this term.</p>
+                    <div class="rule-list">
+                        <article class="rule-card reveal d4">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="num">01</div>
+                            <h3>We build</h3>
+                            <p>Code, circuits, or objects you can hold. Not just notes on a screen.</p>
+                        </article>
+                        <article class="rule-card reveal d5">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="num">02</div>
+                            <h3>We help</h3>
+                            <p>Ask out loud. Pair up. Teach the person next to you when you figure it out.</p>
+                        </article>
+                        <article class="rule-card reveal d6">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="num">03</div>
+                            <h3>We finish</h3>
+                            <p>Every team ships something real before the term ends. Small is fine. Done is better.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 03 TODAY ========== -->
+            <section class="slide surface-dark" data-slide="3">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-stars" data-stars></div>
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content">
+                    <span class="label-pill reveal d1">Mission map</span>
+                    <h2 class="section-title reveal d2" style="margin-top:20px;">Today’s four moves</h2>
+                    <div class="timeline reveal d3">
+                        <div class="t-item">
+                            <div class="node"></div>
+                            <div class="t-copy">
+                                <div class="step">Step 01</div>
+                                <h3>Hear the stations</h3>
+                                <p>Java. Electronics. 3D modeling and printing. Same club, three crafts.</p>
+                            </div>
+                        </div>
+                        <div class="t-item">
+                            <div class="node"></div>
+                            <div class="t-copy">
+                                <div class="step">Step 02</div>
+                                <h3>Choose a team</h3>
+                                <p>Pick the work you want to learn, not just the table with your friends.</p>
+                            </div>
+                        </div>
+                        <div class="t-item">
+                            <div class="node"></div>
+                            <div class="t-copy">
+                                <div class="step">Step 03</div>
+                                <h3>Elect a captain</h3>
+                                <p>Every team needs one before we start. Three teams. Three captains.</p>
+                            </div>
+                        </div>
+                        <div class="t-item">
+                            <div class="node"></div>
+                            <div class="t-copy">
+                                <div class="step">Step 04</div>
+                                <h3>Meet your people</h3>
+                                <p>Sit together. Learn names. Leave with a first tiny task.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 04 STATIONS ========== -->
+            <section class="slide surface-cyan" data-slide="4">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content">
+                    <span class="label-pill reveal d1">Select player</span>
+                    <h2 class="section-title reveal d2" style="margin-top:20px;">Three stations. Three teams.</h2>
+                    <div class="station-grid">
+                        <article class="station s-java reveal d3">
+                            <div class="code">Team 01</div>
+                            <h3>Java</h3>
+                            <p>Teach a computer to think in steps. Games, tools, and logic you can run.</p>
+                            <div class="foot">Keyboard world</div>
+                        </article>
+                        <article class="station s-elec reveal d4">
+                            <div class="code">Team 02</div>
+                            <h3>Electronics</h3>
+                            <p>Wires, boards, sensors. Make objects blink, buzz, sense, and move.</p>
+                            <div class="foot">Circuit world</div>
+                        </article>
+                        <article class="station s-print reveal d5">
+                            <div class="code">Team 03</div>
+                            <h3>3D Modeling &amp; Printing</h3>
+                            <p>Draw in three dimensions. Then print it in plastic you can hold.</p>
+                            <div class="foot">Physical world</div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 05 JAVA ========== -->
+            <section class="slide surface-dark" data-slide="5">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-stars" data-stars></div>
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content team-layout">
+                    <div>
+                        <div class="team-kicker reveal d1"><span class="label-pill cyan">Team 01</span></div>
+                        <h2 class="section-title reveal d2">Java</h2>
+                        <p class="lede reveal d3">Write instructions a computer can follow. Watch text become action.</p>
+                        <div class="do-list reveal d4">
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Start with variables, loops, and decisions.</span></div>
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Build small games, quizzes, and tools.</span></div>
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Debug together. Broken code is part of the job.</span></div>
+                        </div>
+                        <div class="fit-note reveal d5">
+                            <div class="quote-line"></div>
+                            <p class="body-copy">Good fit if you like puzzles, stories that run, or seeing an idea become a program.</p>
+                        </div>
+                    </div>
+                    <div class="stat-stack reveal d4">
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">CODE</div>
+                            <div class="l">Language of logic</div>
+                        </div>
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">RUN</div>
+                            <div class="l">Press play. It happens.</div>
+                        </div>
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">FIX</div>
+                            <div class="l">Errors are clues</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 06 ELECTRONICS ========== -->
+            <section class="slide surface-dark" data-slide="6">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content team-layout">
+                    <div>
+                        <div class="team-kicker reveal d1"><span class="label-pill pink">Team 02</span></div>
+                        <h2 class="section-title reveal d2">Electronics</h2>
+                        <p class="lede reveal d3">Electricity with a plan. You wire it, then it does something in the real room.</p>
+                        <div class="do-list reveal d4">
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Learn circuits: power, path, and load.</span></div>
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Use LEDs, sensors, buzzers, and boards.</span></div>
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Make a thing blink, measure, or move.</span></div>
+                        </div>
+                        <div class="fit-note reveal d5">
+                            <div class="quote-line"></div>
+                            <p class="body-copy">Good fit if you like taking things apart, or you want light and motion — not only a screen.</p>
+                        </div>
+                    </div>
+                    <div class="stat-stack reveal d4">
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">WIRE</div>
+                            <div class="l">Path for current</div>
+                        </div>
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">SENSE</div>
+                            <div class="l">Light, sound, motion</div>
+                        </div>
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">BUILD</div>
+                            <div class="l">Hands on the bench</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 07 3D ========== -->
+            <section class="slide surface-lavender" data-slide="7">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content team-layout">
+                    <div>
+                        <div class="team-kicker reveal d1"><span class="label-pill">Team 03</span></div>
+                        <h2 class="section-title reveal d2">3D Modeling &amp; Printing</h2>
+                        <p class="lede reveal d3">Design a shape on screen. Then print it so it exists on the table.</p>
+                        <div class="do-list reveal d4">
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Model parts in 3D software.</span></div>
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Slice, print, and watch layers stack.</span></div>
+                            <div class="do-item"><span class="plus">+</span><span class="body-copy">Fix the design. Print again. Iterate.</span></div>
+                        </div>
+                        <div class="fit-note reveal d5">
+                            <div class="quote-line"></div>
+                            <p class="body-copy">Good fit if you think in shapes, games, gadgets, or anything you want to hold.</p>
+                        </div>
+                    </div>
+                    <div class="stat-stack reveal d4">
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">DRAW</div>
+                            <div class="l">Form before plastic</div>
+                        </div>
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">PRINT</div>
+                            <div class="l">Layer by layer</div>
+                        </div>
+                        <div class="stat-block">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="n">HOLD</div>
+                            <div class="l">Idea becomes object</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 08 CAPTAINS ========== -->
+            <section class="slide surface-dark" data-slide="8">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-stars" data-stars></div>
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content">
+                    <div class="cap-hero">
+                        <div class="big-03 reveal d1">03</div>
+                        <div class="cap-copy reveal d2">
+                            <span class="label-pill">Party leader</span>
+                            <h2 class="section-title" style="margin-top:16px;">Three teams.<br>Three captains.</h2>
+                        </div>
+                    </div>
+                    <div class="duty-grid">
+                        <article class="duty reveal d3">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="tag">Not a boss</div>
+                            <h3>A helper</h3>
+                            <p>The captain is not in charge of people. They are in charge of the plan.</p>
+                        </article>
+                        <article class="duty reveal d4">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="tag">Start</div>
+                            <h3>Open the session</h3>
+                            <p>Get the team sitting. Repeat the goal for the day. Make sure nobody is lost.</p>
+                        </article>
+                        <article class="duty reveal d5">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="tag">Keep</div>
+                            <h3>Hold the thread</h3>
+                            <p>Watch the time. Give everyone a job. Call a teacher when the team is stuck.</p>
+                        </article>
+                        <article class="duty reveal d6">
+                            <span class="corner-in tl"></span>
+                            <span class="corner-in br"></span>
+                            <div class="tag">Need</div>
+                            <h3>One per team</h3>
+                            <p>Java, Electronics, 3D. We do not start building until each team has a captain.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SLIDE 09 CHOOSE ========== -->
+            <section class="slide surface-cyan" data-slide="9">
+                <div class="fx" aria-hidden="true">
+                    <div class="fx-grain"></div>
+                    <div class="fx-scan"></div>
+                    <div class="fx-crt"></div>
+                </div>
+                <div class="horizon" aria-hidden="true"></div>
+                <div class="bracket tl"></div>
+                <div class="bracket tr"></div>
+                <div class="bracket bl"></div>
+                <div class="bracket br"></div>
+                <div class="slide-content">
+                    <div class="close-grid">
+                        <div>
+                            <span class="label-pill reveal d1">Now playing</span>
+                            <h2 class="section-title reveal d2" style="margin-top:20px;">How to choose</h2>
+                            <div class="choose-list">
+                                <div class="choose-item reveal d3">
+                                    <div class="sq">01</div>
+                                    <div>
+                                        <h3>Pick the craft</h3>
+                                        <p>Join the station you want to learn, not only the friends table.</p>
+                                    </div>
+                                </div>
+                                <div class="choose-item reveal d4">
+                                    <div class="sq">02</div>
+                                    <div>
+                                        <h3>If two look good</h3>
+                                        <p>Take the one you have never tried. You can still visit later.</p>
+                                    </div>
+                                </div>
+                                <div class="choose-item reveal d5">
+                                    <div class="sq">03</div>
+                                    <div>
+                                        <h3>Then sit down</h3>
+                                        <p>Find your team. Learn names. Nominate a captain out loud.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class="next-panel reveal d4">
+                            <span class="label-pill cyan">Next 10 minutes</span>
+                            <ol>
+                                <li><strong>01 · Move</strong>Stand at the station you chose.</li>
+                                <li><strong>02 · Captain</strong>Each team names one person.</li>
+                                <li><strong>03 · Start</strong>Ready player one. Let’s build.</li>
+                            </ol>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        /* ===========================================
+           STARFIELD — dark surfaces only
+           =========================================== */
+        (function seedStars() {
+            const colors = ["", "yellow", "white"];
+            document.querySelectorAll("[data-stars]").forEach((layer) => {
+                for (let i = 0; i < 28; i++) {
+                    const s = document.createElement("span");
+                    s.className = "star " + colors[i % colors.length];
+                    s.style.left = Math.floor(Math.random() * 1880) + "px";
+                    s.style.top = Math.floor(Math.random() * 1040) + "px";
+                    s.style.animationDelay = (Math.random() * 3).toFixed(2) + "s";
+                    layer.appendChild(s);
+                }
+            });
+        })();
+
+        /* ===========================================
+           SLIDE PRESENTATION CONTROLLER
+           Fixed-stage scale + keyboard / wheel / swipe
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = Array.from(document.querySelectorAll(".slide"));
+                this.currentSlide = 0;
+                this.stage = document.getElementById("deckStage");
+                this.wheelLock = false;
+                this.touchStartX = 0;
+                this.touchStartY = 0;
+                this.setupChrome();
+                this.setupStageScale();
+                this.setupKeyboardNav();
+                this.setupWheelNav();
+                this.setupTouchNav();
+                const params = new URLSearchParams(window.location.search);
+                const fromQuery = parseInt(params.get("slide") || "", 10);
+                const fromHash = parseInt((window.location.hash || "").replace(/\D/g, ""), 10);
+                const start = Number.isFinite(fromQuery) && fromQuery > 0
+                    ? fromQuery - 1
+                    : (Number.isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+                this.showSlide(start);
+            }
+
+            setupChrome() {
+                this.slides.forEach((slide, i) => {
+                    const counter = document.createElement("div");
+                    counter.className = "hud-counter";
+                    counter.textContent = String(i + 1).padStart(2, "0") + " / " + String(this.slides.length).padStart(2, "0");
+                    slide.appendChild(counter);
+
+                    const hint = document.createElement("div");
+                    hint.className = "nav-hint";
+                    hint.textContent = "Use keys →";
+                    slide.appendChild(hint);
+
+                    const rail = document.createElement("div");
+                    rail.className = "nav-rail";
+                    this.slides.forEach((_, j) => {
+                        const dot = document.createElement("button");
+                        dot.className = "nav-dot" + (j === 0 ? " active" : "");
+                        dot.type = "button";
+                        dot.setAttribute("aria-label", "Go to slide " + (j + 1));
+                        dot.addEventListener("click", () => this.showSlide(j));
+                        rail.appendChild(dot);
+                    });
+                    slide.appendChild(rail);
+                });
+            }
+
+            setupStageScale() {
+                const scale = () => {
+                    const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+                    const x = (window.innerWidth - 1920 * factor) / 2;
+                    const y = (window.innerHeight - 1080 * factor) / 2;
+                    this.stage.style.transform = "translate(" + x + "px, " + y + "px) scale(" + factor + ")";
+                };
+                scale();
+                window.addEventListener("resize", scale);
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener("keydown", (e) => {
+                    if (e.target && e.target.getAttribute("contenteditable") === "true") return;
+                    if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) {
+                        e.preventDefault();
+                        this.next();
+                    } else if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) {
+                        e.preventDefault();
+                        this.prev();
+                    } else if (e.key === "Home") {
+                        e.preventDefault();
+                        this.showSlide(0);
+                    } else if (e.key === "End") {
+                        e.preventDefault();
+                        this.showSlide(this.slides.length - 1);
+                    }
+                });
+            }
+
+            setupWheelNav() {
+                window.addEventListener("wheel", (e) => {
+                    if (document.body.classList.contains("editing")) return;
+                    if (this.wheelLock) return;
+                    if (Math.abs(e.deltaY) < 20) return;
+                    this.wheelLock = true;
+                    if (e.deltaY > 0) this.next();
+                    else this.prev();
+                    setTimeout(() => { this.wheelLock = false; }, 700);
+                }, { passive: true });
+            }
+
+            setupTouchNav() {
+                this.stage.addEventListener("touchstart", (e) => {
+                    this.touchStartX = e.changedTouches[0].screenX;
+                    this.touchStartY = e.changedTouches[0].screenY;
+                }, { passive: true });
+                this.stage.addEventListener("touchend", (e) => {
+                    const dx = e.changedTouches[0].screenX - this.touchStartX;
+                    const dy = e.changedTouches[0].screenY - this.touchStartY;
+                    if (Math.abs(dx) < 50 && Math.abs(dy) < 50) return;
+                    if (Math.abs(dx) > Math.abs(dy)) {
+                        if (dx < 0) this.next();
+                        else this.prev();
+                    } else {
+                        if (dy < 0) this.next();
+                        else this.prev();
+                    }
+                }, { passive: true });
+            }
+
+            next() { this.showSlide(this.currentSlide + 1); }
+            prev() { this.showSlide(this.currentSlide - 1); }
+
+            showSlide(index) {
+                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+                this.slides.forEach((slide, i) => {
+                    const on = i === this.currentSlide;
+                    slide.classList.toggle("active", on);
+                    slide.classList.toggle("visible", on);
+                    slide.querySelectorAll(".nav-dot").forEach((dot, j) => {
+                        dot.classList.toggle("active", j === this.currentSlide);
+                    });
+                });
+            }
+        }
+
+        const deck = new SlidePresentation();
+
+        /* ===========================================
+           INLINE EDITOR
+           Hover top-left or press E. Ctrl/Cmd+S saves.
+           =========================================== */
+        class InlineEditor {
+            constructor() {
+                this.isActive = false;
+                this.storageKey = "myp-coding-club-edits";
+                this.toggleBtn = document.getElementById("editToggle");
+                this.restore();
+            }
+
+            editableSelector() {
+                return "h1, h2, h3, p, li, .lede, .body-copy, .title-tag, .eyebrow, .hero-badge, .label-pill, .station h3, .station p, .station .foot, .station .code, .t-copy h3, .t-copy p, .t-copy .step, .do-item span:last-child, .stat-block .n, .stat-block .l, .duty h3, .duty p, .duty .tag, .choose-item h3, .choose-item p, .next-panel li, .hud-counter, .nav-hint";
+            }
+
+            toggleEditMode() {
+                this.isActive = !this.isActive;
+                document.body.classList.toggle("editing", this.isActive);
+                this.toggleBtn.classList.toggle("active", this.isActive);
+                this.toggleBtn.textContent = this.isActive ? "Done" : "Edit";
+                document.querySelectorAll(this.editableSelector()).forEach((el) => {
+                    el.setAttribute("contenteditable", this.isActive ? "true" : "false");
+                });
+                if (!this.isActive) this.persist();
+            }
+
+            persist() {
+                const data = [];
+                document.querySelectorAll(this.editableSelector()).forEach((el, i) => {
+                    data[i] = el.innerHTML;
+                });
+                try { localStorage.setItem(this.storageKey, JSON.stringify(data)); } catch (err) {}
+            }
+
+            restore() {
+                try {
+                    const raw = localStorage.getItem(this.storageKey);
+                    if (!raw) return;
+                    const data = JSON.parse(raw);
+                    document.querySelectorAll(this.editableSelector()).forEach((el, i) => {
+                        if (typeof data[i] === "string") el.innerHTML = data[i];
+                    });
+                } catch (err) {}
+            }
+
+            exportFile() {
+                this.persist();
+                const html = "<!DOCTYPE html>\\n" + document.documentElement.outerHTML;
+                const blob = new Blob([html], { type: "text/html" });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "myp-coding-club.html";
+                a.click();
+                URL.revokeObjectURL(a.href);
+            }
+        }
+
+        const editor = new InlineEditor();
+
+        document.getElementById("editToggle").addEventListener("click", () => editor.toggleEditMode());
+
+        const hotzone = document.querySelector(".edit-hotzone");
+        const editToggle = document.getElementById("editToggle");
+        let hideTimeout = null;
+        hotzone.addEventListener("mouseenter", () => {
+            clearTimeout(hideTimeout);
+            editToggle.classList.add("show");
+        });
+        hotzone.addEventListener("mouseleave", () => {
+            hideTimeout = setTimeout(() => {
+                if (!editor.isActive) editToggle.classList.remove("show");
+            }, 400);
+        });
+        editToggle.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+        editToggle.addEventListener("mouseleave", () => {
+            hideTimeout = setTimeout(() => {
+                if (!editor.isActive) editToggle.classList.remove("show");
+            }, 400);
+        });
+        hotzone.addEventListener("click", () => editor.toggleEditMode());
+
+        document.addEventListener("keydown", (e) => {
+            if ((e.key === "e" || e.key === "E") && !e.target.getAttribute("contenteditable")) {
+                editor.toggleEditMode();
+            }
+            if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+                e.preventDefault();
+                editor.exportFile();
+            }
+        });
+    </script>
+</body>
+</html>
