@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fun Facts — Satellite Academy</title>
+<meta name="description" content="Amazing facts about human-made satellites for kids — telecom, TV, defence and science: flip cards, a random fact machine and a space quiz." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+<noscript><style>body{opacity:1 !important}</style></noscript>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>" />
+</head>
+<body>
+
+<div class="progress"></div>
+<canvas id="starfield"></canvas>
+<div class="nebula"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="cursor-glow"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="satellites.html">What Are Satellites?</a>
+      <a href="history.html">History</a>
+      <a href="fun-facts.html" class="active">Fun Facts</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <a class="nav-cta" href="about.html">About Me ✦</a>
+    <button class="nav-toggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span> Fun Facts</div>
+    <span class="eyebrow lime reveal">🎉 The Fun Zone</span>
+    <h1 class="h-sec reveal" style="--d:1">Facts that will make you say <span class="grad-text g2">“WOW!”</span></h1>
+    <p class="lead reveal" style="--d:2">This is where space gets silly, surprising and super-cool. Flip the cards, spin the fact machine, and finish with the big quiz!</p>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>DID YOU KNOW?</span><span>SPACE IS SILENT</span><span>SATELLITES NEVER STOP</span><span>THE ISS IS A GIANT LAB</span><span>LIGHT TRAVELS IN SECONDS</span><span>EARTH IS MOSTLY BLUE</span>
+    <span>DID YOU KNOW?</span><span>SPACE IS SILENT</span><span>SATELLITES NEVER STOP</span><span>THE ISS IS A GIANT LAB</span><span>LIGHT TRAVELS IN SECONDS</span><span>EARTH IS MOSTLY BLUE</span>
+  </div>
+</div>
+
+<!-- ============ FLIP CARDS ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.6rem">
+      <span class="eyebrow reveal">Flip & discover</span>
+      <h2 class="h-sec reveal">Eight <span class="grad-text">surprising</span> facts</h2>
+      <p class="lead reveal">Hover on a computer, or tap on a phone, to reveal the secret behind each number.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="flip reveal" style="--d:0"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">27,600</div><div class="q">km per hour</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">💨</div><p>That's how fast satellites zoom around Earth — about <b>23 times the speed of sound!</b> Faster than anything you've ever ridden.</p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">16</div><div class="q">sunrises every day</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">🌅</div><p>Astronauts on the Space Station see the Sun come up about <b>16 times every single day!</b> That's a lot of breakfasts.</p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:2"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">0</div><div class="q">sound in space</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">🤫</div><p>Space is almost completely silent, because there's no air to carry sound. Even a giant explosion would make <b>no noise at all.</b></p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:3"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">1.3s</div><div class="q">signal to Earth</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">⚡</div><p>Radio signals travel at the speed of light. A message from the ISS reaches the ground in about <b>1.3 seconds</b> — faster than you can blink twice.</p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:0"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">58 cm</div><div class="q">the first satellite</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">⚽</div><p>Sputnik 1 was about the size of a beach ball. The first machine ever sent to space was <b>tiny!</b></p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">109 m</div><div class="q">Space Station width</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">🏟️</div><p>The International Space Station is as long as a whole <b>football field!</b> Astronauts live and work inside it together.</p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:2"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">~90</div><div class="q">minutes per orbit</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">⏱️</div><p>A satellite in low orbit goes all the way around the Earth in about <b>90 minutes</b> — that's faster than a long film.</p></div>
+      </div></div>
+
+      <div class="flip reveal" style="--d:3"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="big">∞</div><div class="q">no fuel to keep moving</div><span class="hint">What's that? →</span></div>
+        <div class="flip-face flip-back"><div class="ico">🔄</div><p>In space there's no air to slow it down, so a satellite can keep gliding on its orbit for <b>years</b> without using fuel.</p></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FACT MACHINE ============ -->
+<section>
+  <div class="wrap">
+    <div class="machine reveal-scale">
+      <span class="eyebrow cyan">The Fact-o-Tron 3000</span>
+      <h2 class="h-sec" style="font-size:clamp(1.6rem,4vw,2.4rem)">Spin up a random space fact! 🎰</h2>
+      <div class="fact" id="factBox">Press the big button below and I'll surprise you with a fact from space. 👇</div>
+      <button class="btn btn-primary" id="factBtn" data-facts='[
+        "A satellite in low orbit travels around the whole Earth in about 90 minutes — faster than most films! 🎬",
+        "The word ‘satellite’ comes from Latin and means ‘attendant’ or ‘companion’ — like a little friend that follows Earth everywhere. 👯",
+        "There is no sound in space because there is no air. A rocket launch is only loud because of our atmosphere! 🔇",
+        "GPS satellites carry super-accurate atomic clocks. They are so precise they only lose about one second every few million years. ⏰",
+        "The International Space Station is the most expensive object ever built — kind of like a giant, floating science lab. 🔬",
+        "Satellites see about 16 sunrises and sunsets every day as they whirl around our planet. 🌅",
+        "Some satellites fly over the poles from north to south. They can photograph the whole Earth in just a few days. 🧭",
+        "The James Webb Space Telescope’s giant mirror is made of 18 gold-coloured hexagons working together like one big eye. 🪞",
+        "Satellites help firefighters spot forest fires from space within minutes of them starting. 🔥",
+        "Space junk — old dead satellites and rocket parts — orbits Earth too, and engineers work hard to keep it from bumping into working satellites. ♻️",
+        "Because there is no air in space, satellites keep gliding without needing fuel. Gravity is their invisible leash. 🪢",
+        "The first satellite ever, Sputnik 1, was only 58 cm wide and beeped for just 21 days. 🛰️",
+        "Phone calls, TV shows and internet all jump up to a communications satellite and back down again in a fraction of a second. 📡",
+        "One big broadcast satellite can send the same TV channel to millions of homes across a whole continent at the same time. 📺",
+        "Some satellites are specially built to spot a missile launch the moment it happens, giving countries an early warning. 🛡️",
+        "Satellite phones work where there are no towers at all — on a ship in the middle of the ocean or on top of a mountain. 📱"
+      ]'>Give me a fact! ✨</button>
+      <p style="color:var(--dim);font-size:.82rem;margin-top:1.4rem;position:relative">Keep pressing — there are 16 facts hiding inside.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHOA NUMBERS ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.4rem">
+      <span class="eyebrow amber reveal">Mind = blown</span>
+      <h2 class="h-sec reveal">Numbers too big to <span class="grad-text g2">imagine</span></h2>
+    </div>
+    <div class="stats">
+      <div class="stat reveal" style="--d:0"><div class="n" data-count="24" data-suffix="h/day">0</div><div class="l">A geostationary satellite never seems to move — it matches Earth's spin exactly</div></div>
+      <div class="stat reveal" style="--d:1"><div class="n" data-count="35786" data-suffix=" km">0</div><div class="l">How high geostationary satellites hover above us</div></div>
+      <div class="stat reveal" style="--d:2"><div class="n" data-count="3">0</div><div class="l">Satellites you need minimum to find your position on Earth</div></div>
+      <div class="stat reveal" style="--d:3"><div class="n" data-count="70" data-suffix="+ yrs">0</div><div class="l">How long humans have been sending things to orbit</div></div>
+    </div>
+    <div class="note reveal" style="max-width:860px;margin-inline:auto">
+      <span class="e">🤯</span>
+      <p><b>Fun comparison:</b> if you stacked 12,800 satellites on top of each other how tall would that be? You'd need a VERY big ladder — some satellites are the size of a bus!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.4rem">
+      <span class="eyebrow pink reveal">Final test, cadet!</span>
+      <h2 class="h-sec reveal">The <span class="grad-text">Space Expert</span> quiz</h2>
+      <p class="lead reveal">Answer all six questions to see your badge. Ready? Go! 🚀</p>
+    </div>
+
+    <div class="quiz" id="quiz">
+      <div class="q-block reveal">
+        <h3>1. What was the name of the very first satellite launched into space?</h3>
+        <button class="q-opt" data-correct="0">Hubble 1</button>
+        <button class="q-opt" data-correct="1">Sputnik 1</button>
+        <button class="q-opt" data-correct="0">Telstar 1</button>
+      </div>
+      <div class="q-block reveal">
+        <h3>2. About how fast do satellites travel around the Earth?</h3>
+        <button class="q-opt" data-correct="0">600 km per hour</button>
+        <button class="q-opt" data-correct="0">5,000 km per hour</button>
+        <button class="q-opt" data-correct="1">27,600 km per hour</button>
+      </div>
+      <div class="q-block reveal">
+        <h3>3. Which satellites help your phone show a blue dot on a map?</h3>
+        <button class="q-opt" data-correct="1">GPS navigation satellites</button>
+        <button class="q-opt" data-correct="0">Weather satellites</button>
+        <button class="q-opt" data-correct="0">Space telescopes</button>
+      </div>
+      <div class="q-block reveal">
+        <h3>4. What do most satellites use to make their electricity?</h3>
+        <button class="q-opt" data-correct="0">Windmills</button>
+        <button class="q-opt" data-correct="0">Burning rocket fuel</button>
+        <button class="q-opt" data-correct="1">Sunlight and solar panels</button>
+      </div>
+      <div class="q-block reveal">
+        <h3>5. How long does it take the Space Station to orbit Earth once?</h3>
+        <button class="q-opt" data-correct="0">About 24 hours</button>
+        <button class="q-opt" data-correct="1">About 90 minutes</button>
+        <button class="q-opt" data-correct="0">About 1 week</button>
+      </div>
+      <div class="q-block reveal">
+        <h3>6. Which kind of satellite carries your phone calls, TV and internet around the world?</h3>
+        <button class="q-opt" data-correct="0">Space telescopes</button>
+        <button class="q-opt" data-correct="1">Communication satellites</button>
+        <button class="q-opt" data-correct="0">Weather satellites</button>
+      </div>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <span class="eyebrow lime">One page left</span>
+      <h2 style="margin:.9rem 0 .6rem">Want to know who <span class="grad-text g2">built</span> this website?</h2>
+      <p class="lead center">A real (well… mostly real) student who loves space. Come say hello!</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="about.html"><span class="shimmer"></span>Meet the student 👩‍🚀</a>
+        <a class="btn btn-ghost" href="index.html">Back home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:1rem"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+        <p style="color:var(--muted);max-width:38ch;margin-top:1rem">A colourful little corner of the internet where kids can learn about the amazing machines that circle our planet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="satellites.html">What Are Satellites?</a>
+        <a href="history.html">History</a>
+        <a href="fun-facts.html">Fun Facts</a>
+        <a href="about.html">About Me</a>
+      </div>
+      <div>
+        <h4>Learn More</h4>
+        <a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA (opens in new tab)</a>
+        <a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a>
+        <a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Satellite Academy — a school science project. Space photos: NASA (public domain) · Photos: Unsplash</span>
+      <span class="made">Made with 💙 by Maya Chen · Grade 5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

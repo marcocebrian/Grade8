@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Me — Satellite Academy</title>
+<meta name="description" content="Meet Maya Chen, the Grade 5 student who built Satellite Academy for her school science project." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+<noscript><style>body{opacity:1 !important}</style></noscript>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>" />
+</head>
+<body>
+
+<div class="progress"></div>
+<canvas id="starfield"></canvas>
+<div class="nebula"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="cursor-glow"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="satellites.html">What Are Satellites?</a>
+      <a href="history.html">History</a>
+      <a href="fun-facts.html">Fun Facts</a>
+      <a href="about.html" class="active">About Me</a>
+    </nav>
+    <a class="nav-cta" href="fun-facts.html">Fun Zone ✦</a>
+    <button class="nav-toggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span> About Me</div>
+    <span class="eyebrow pink reveal">👩‍🚀 The human behind the website</span>
+    <h1 class="h-sec reveal" style="--d:1">Hi, I'm <span class="grad-text">Maya</span> 👋</h1>
+    <p class="lead reveal" style="--d:2">I'm 10 years old, I'm in Grade 5, and I am completely, totally, 100% obsessed with space. I built this website for my science project — I hope you like it!</p>
+  </div>
+</section>
+
+<!-- ============ PROFILE ============ -->
+<section>
+  <div class="wrap profile">
+    <div class="reveal-scale">
+      <div class="avatar-wrap">
+        <span class="ring2"></span>
+        <img src="img/cadet-avatar.svg" alt="A cartoon avatar of Maya smiling inside a space helmet" />
+      </div>
+      <div class="badge-row" style="justify-content:center">
+        <span class="chip c">🎂 Age 10</span>
+        <span class="chip a">🏫 Grade 5</span>
+        <span class="chip l">🌍 Planet Earth</span>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <span class="eyebrow">My story</span>
+      <h2 class="h-sec">How I fell in love with <span class="grad-text g2">satellites</span></h2>
+      <p class="lead">It started one night when my dad and I looked up and saw a tiny moving star gliding across the sky. It wasn't a star at all — it was a satellite! I couldn't believe a machine was up there, so far away and moving so fast, and I could see it with my own eyes.</p>
+      <p class="lead">Then I learned something amazing: the same kind of human-made machine is doing jobs all around us every day. Communications satellites carry phone calls, texts and internet to ships, planes and far-away villages. Broadcast satellites send TV and radio to millions of homes. Navigation satellites show the blue dot on a map. Weather satellites warn us about storms — and some satellites even help keep countries safe and rescue people in trouble.</p>
+      <p class="lead">After that I read every space book in the library (twice). I drew satellites on every page of my notebook. And when our teacher said we could choose ANY topic for our science project… I already knew mine.</p>
+      <p class="lead">So here it is: everything I learned, turned into a colourful little website. I hope it makes you look up at the sky tonight too. ✨</p>
+      <div class="badge-row">
+        <span class="chip">Drawing 🎨</span>
+        <span class="chip">Reading 📚</span>
+        <span class="chip">Lego rockets 🧱</span>
+        <span class="chip">Football ⚽</span>
+        <span class="chip">Stargazing 🔭</span>
+        <span class="chip">Coding 💻</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAVOURITES ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.6rem">
+      <span class="eyebrow reveal">A few of my favourite things</span>
+      <h2 class="h-sec reveal">My <span class="grad-text">space shelf</span></h2>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal" data-tilt style="--d:0"><div class="ico">🔭</div><h3>James Webb Telescope</h3><p>My favourite satellite ever. Its golden mirror takes the most beautiful pictures of space.</p></div>
+      <div class="card reveal" data-tilt style="--d:1"><div class="ico">🧑‍🚀</div><h3>The Space Station</h3><p>It's like a floating house for astronauts. I would 100% live there if I could.</p></div>
+      <div class="card reveal" data-tilt style="--d:2"><div class="ico">📡</div><h3>Communication Satellites</h3><p>They carry phone calls, TV and internet to every corner of the planet — even the middle of the ocean. I think that's pure magic.</p></div>
+      <div class="card reveal" data-tilt style="--d:3"><div class="ico">🌌</div><h3>The Night Sky</h3><p>On clear nights I count stars from my garden and try to spot a moving satellite.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNAL SPLIT ============ -->
+<section>
+  <div class="wrap split">
+    <div class="split-media reveal-l">
+      <img src="img/human-made-satellite.jpg" alt="A real satellite wrapped in gold foil with folded solar panels, floating in orbit" loading="lazy" />
+      <span class="tag">🛰️ The one I'm drawing today</span>
+    </div>
+    <div class="reveal-r">
+      <span class="eyebrow amber">In my notebook</span>
+      <h2 class="h-sec">I draw every satellite I <span class="grad-text g2">learn about</span></h2>
+      <p class="lead">Every time I discover a new satellite, I draw it — with its solar panels, its dish, its antennas and lots of sparkles. My notebook is almost full already!</p>
+      <p class="lead">My drawing of the James Webb Telescope won a sticker from my teacher. I stuck it right on the cover. 🏅</p>
+      <div class="note">
+        <span class="e">🎯</span>
+        <p><b>My dream job:</b> to become an aerospace engineer and help design a satellite that looks at the ocean and helps protect sea animals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MY TOP FACTS ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.4rem">
+      <span class="eyebrow lime reveal">From my notebook</span>
+      <h2 class="h-sec reveal">My top 5 <span class="grad-text g2">space facts</span></h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal" data-tilt><div class="num">5</div><h3>Satellites can be seen!</h3><p>On a clear night, a moving dot of light gliding across the sky is probably a satellite — no telescope needed.</p></div>
+      <div class="card reveal" data-tilt style="--d:1"><div class="num">4</div><h3>They help save lives</h3><p>Satellites spot giant storms and forest fires from space, giving people time to get to safety.</p></div>
+      <div class="card reveal" data-tilt style="--d:2"><div class="num">3</div><h3>The Sun gives them power</h3><p>No plugs in space! Satellites use big solar panels to turn sunlight into electricity.</p></div>
+      <div class="card reveal" data-tilt style="--d:3"><div class="num">2</div><h3>They never really stop</h3><p>With no air to slow them down, they keep gliding around Earth for years and years and years.</p></div>
+      <div class="card reveal" data-tilt><div class="num">1</div><h3>It all started with a beep</h3><p>The first satellite, Sputnik 1, just went “beep beep beep” — and it changed the whole world forever.</p></div>
+      <div class="card reveal" data-tilt style="--d:1"><div class="ico" style="font-size:2rem">💌</div><h3>One more thing…</h3><p>Thank you for visiting my project! If you learned even one new thing, my mission was a success. 🚀</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section>
+  <div class="wrap split">
+    <div class="reveal-l">
+      <span class="eyebrow cyan">Say hello</span>
+      <h2 class="h-sec">Send a message to <span class="grad-text">Mission Control</span></h2>
+      <p class="lead">Did you spot a satellite in the sky? Do you have a space question? Or just want to say hi? Fill in the little form and my pretend inbox will light up. 🛰️</p>
+      <div class="note cyan">
+        <span class="e">🫶</span>
+        <p><b>Be kind:</b> telling someone you liked their work is one of the nicest things on the internet.</p>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <form class="form" id="contactForm">
+        <div class="field"><label for="name">Your name</label><input id="name" type="text" placeholder="e.g. Alex" required /></div>
+        <div class="field"><label for="msg">Your message</label><textarea id="msg" rows="5" placeholder="I loved the fun facts page!" required></textarea></div>
+        <button class="btn btn-primary" type="submit"><span class="shimmer"></span>Send to space 🚀</button>
+        <div class="ok" id="formOk"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <span class="eyebrow">Thanks for reading 💙</span>
+      <h2 style="margin:.9rem 0 .6rem">That's my whole <span class="grad-text">space adventure</span></h2>
+      <p class="lead center">Want to explore again? Head back to the start, or dive straight into the fun facts.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="index.html"><span class="shimmer"></span>Back to Home</a>
+        <a class="btn btn-ghost" href="fun-facts.html">Fun Facts 🎉</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:1rem"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+        <p style="color:var(--muted);max-width:38ch;margin-top:1rem">A colourful little corner of the internet where kids can learn about the amazing machines that circle our planet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="satellites.html">What Are Satellites?</a>
+        <a href="history.html">History</a>
+        <a href="fun-facts.html">Fun Facts</a>
+        <a href="about.html">About Me</a>
+      </div>
+      <div>
+        <h4>Learn More</h4>
+        <a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA (opens in new tab)</a>
+        <a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a>
+        <a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Satellite Academy — a school science project. Space photos: NASA (public domain) · Photos: Unsplash</span>
+      <span class="made">Made with 💙 by Maya Chen · Grade 5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

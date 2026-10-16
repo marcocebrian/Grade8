@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Satellite Academy — Home | Learn About Satellites!</title>
+<meta name="description" content="Blast off into space! A fun, colourful place for kids to learn about human-made satellites — the machines that carry our calls, TV and internet, guide us, watch the weather and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+<noscript><style>body{opacity:1 !important}</style></noscript>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>" />
+</head>
+<body>
+
+<div class="progress"></div>
+<canvas id="starfield"></canvas>
+<div class="nebula"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="cursor-glow"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-orbit"><span class="brand-dot"></span></span>
+      Satellite Academy
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="satellites.html">What Are Satellites?</a>
+      <a href="history.html">History</a>
+      <a href="fun-facts.html">Fun Facts</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <a class="nav-cta" href="fun-facts.html">Fun Zone ✦</a>
+    <button class="nav-toggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal">🛰️ Welcome, space cadet</span>
+      <h1 style="margin-top:1.2rem">
+        <span class="word" style="--i:0">Blast</span>
+        <span class="word grad-text" style="--i:1">off</span>
+        <span class="word" style="--i:2">into</span><br />
+        <span class="word grad-text g2" style="--i:3">Satellites!</span>
+      </h1>
+      <div class="type-line" data-type='["They carry your calls, texts and TV…","They guide ships, planes and cars…","Some guard countries and watch for danger…","They are machines — built by humans…","Ready to become a space expert?"]'></div>
+      <p class="lead">Somewhere far above your head — higher than the tallest mountain, higher than any airplane — thousands of <b>human-made machines</b> are quietly circling the whole planet. They carry your phone calls and internet, send TV and radio, guide ships and cars, watch the weather, help defend countries, and even save lives. This is their story.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="satellites.html"><span class="shimmer"></span>Start Exploring 🚀</a>
+        <a class="btn btn-ghost" href="fun-facts.html">Jump to Fun Facts ✦</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-scale">
+      <div class="orbit o2"><span class="craft up">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="17" y="18" width="14" height="14" rx="3" fill="#e0e7ff"/><rect x="19.5" y="21" width="9" height="8" rx="1.5" fill="#38bdf8"/><rect x="2" y="20" width="12" height="10" rx="1.5" fill="#6366f1"/><rect x="34" y="20" width="12" height="10" rx="1.5" fill="#6366f1"/><path d="M24 18V10" stroke="#a5f3fc" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="8" r="3" fill="#fbbf24"/></svg>
+      </span></div>
+      <div class="orbit o1"><span class="craft">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="17" y="18" width="14" height="14" rx="3" fill="#e0e7ff"/><rect x="19.5" y="21" width="9" height="8" rx="1.5" fill="#f472b6"/><rect x="2" y="20" width="12" height="10" rx="1.5" fill="#6366f1"/><rect x="34" y="20" width="12" height="10" rx="1.5" fill="#6366f1"/><path d="M24 18V10" stroke="#a5f3fc" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="8" r="3" fill="#fbbf24"/></svg>
+      </span></div>
+      <div class="planet"><div class="clouds"></div></div>
+      <div class="float-badge fb1">🌍 <b>Right above you</b></div>
+      <div class="float-badge fb2">📸 <b>Takes photos</b></div>
+      <div class="float-badge fb3">⚡ <b>27,600 km/h</b></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="mouse"></span>Scroll to launch</div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>SPUTNIK</span><span>TELSTAR</span><span>INTELSAT</span><span>GPS</span><span>GALILEO</span><span>STARLINK</span><span>IRIDIUM</span><span>SATELLITE TV</span><span>EARTH OBSERVATION</span><span>DEFENCE WATCH</span>
+    <span>SPUTNIK</span><span>TELSTAR</span><span>INTELSAT</span><span>GPS</span><span>GALILEO</span><span>STARLINK</span><span>IRIDIUM</span><span>SATELLITE TV</span><span>EARTH OBSERVATION</span><span>DEFENCE WATCH</span>
+  </div>
+</div>
+
+<!-- ============ STATS ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.4rem">
+      <span class="eyebrow amber reveal">Numbers that make you go "wow"</span>
+      <h2 class="h-sec reveal">Space by the <span class="grad-text g2">numbers</span></h2>
+      <p class="lead reveal">Space is BIG. These giant numbers are hard to imagine — so try closing your eyes and counting… it would take a very long time!</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal" style="--d:0"><div class="n" data-count="12800" data-suffix="+">0</div><div class="l">Satellites orbiting Earth today</div></div>
+      <div class="stat reveal" style="--d:1"><div class="n" data-count="27600" data-suffix=" km/h">0</div><div class="l">How fast they zoom around us</div></div>
+      <div class="stat reveal" style="--d:2"><div class="n" data-count="90" data-suffix=" min">0</div><div class="l">One full trip around the world</div></div>
+      <div class="stat reveal" style="--d:3"><div class="n" data-count="1957">0</div><div class="l">The year it all began 🛰️</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION PICKER ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.6rem">
+      <span class="eyebrow reveal">Pick your mission</span>
+      <h2 class="h-sec reveal">Four adventures <span class="grad-text">await you</span></h2>
+    </div>
+    <div class="grid grid-4">
+      <a class="card link-card reveal" data-tilt style="--d:0" href="satellites.html">
+        <div class="num">01</div>
+        <div class="ico">🛰️</div>
+        <h3>What Are Satellites?</h3>
+        <p>Meet the flying machines — what's inside them and how they stay up without falling down.</p>
+        <span class="arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="card link-card reveal" data-tilt style="--d:1" href="history.html">
+        <div class="num">02</div>
+        <div class="ico">🚀</div>
+        <h3>The History</h3>
+        <p>Travel back to 1957 and follow the amazing journey from a tiny beeping ball to giant space telescopes.</p>
+        <span class="arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="card link-card reveal" data-tilt style="--d:2" href="fun-facts.html">
+        <div class="num">03</div>
+        <div class="ico">🎉</div>
+        <h3>Fun Facts</h3>
+        <p>Flip the cards, spin the fact machine, and take the quiz to become a true Space Expert.</p>
+        <span class="arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="card link-card reveal" data-tilt style="--d:3" href="about.html">
+        <div class="num">04</div>
+        <div class="ico">👩‍🚀</div>
+        <h3>About Me</h3>
+        <p>Hi! I'm Maya, the student who built this website. Come see my drawings and favourite space facts.</p>
+        <span class="arrow">Explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT 1 ============ -->
+<section>
+  <div class="wrap split">
+    <div class="split-media reveal-l">
+      <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&q=80" alt="Earth seen from space with the curve of the horizon" loading="lazy" />
+      <span class="tag">🌍 Earth from orbit</span>
+    </div>
+    <div class="reveal-r">
+      <span class="eyebrow">Why should you care?</span>
+      <h2 class="h-sec">Human-made satellites are like <span class="grad-text">super-eyes</span> in the sky</h2>
+      <p class="lead">A satellite is a machine that people build and launch into space, where it circles the Earth. Up there, it can look at the ENTIRE planet at once — something nobody standing on the ground can do. That's why we use them for so many jobs.</p>
+      <ul class="tick">
+        <li><span class="ck">✓</span><span><b>Telecom &amp; internet:</b> phone calls, texts, video and broadband jump up to space and back down — even in the middle of the ocean.</span></li>
+        <li><span class="ck">✓</span><span><b>TV &amp; radio:</b> one broadcast satellite sends the same channel to millions of homes at once.</span></li>
+        <li><span class="ck">✓</span><span><b>Maps &amp; GPS:</b> the blue dot on a phone map comes from navigation satellites.</span></li>
+        <li><span class="ck">✓</span><span><b>Weather:</b> they spot storms and hurricanes days before they arrive.</span></li>
+        <li><span class="ck">✓</span><span><b>Military &amp; defence:</b> countries use their own satellites to keep watch and stay in touch.</span></li>
+        <li><span class="ck">✓</span><span><b>Science:</b> they watch oceans, forests, ice, and even far-away galaxies.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT 2 ============ -->
+<section>
+  <div class="wrap split rev">
+    <div class="split-media reveal-r">
+      <img src="img/rocket-launch.jpg" alt="A rocket lifting off its launch pad in a huge cloud of smoke" loading="lazy" />
+      <span class="tag">🚀 Liftoff!</span>
+    </div>
+    <div class="reveal-l">
+      <span class="eyebrow lime">Satellites are everywhere</span>
+      <h2 class="h-sec">You used one <span class="grad-text g2">today</span> — maybe without knowing!</h2>
+      <p class="lead">Did you check the weather before school? Watch a live sports game? Use a map to find a new park? Every one of those moments probably needed a satellite somewhere far above you doing its quiet job.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="satellites.html"><span class="shimmer"></span>See how they work</a>
+        <a class="btn btn-ghost" href="history.html">Meet the first one →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section>
+  <div class="wrap">
+    <div class="machine reveal">
+      <span class="eyebrow pink">A thought to keep</span>
+      <p class="fact" style="min-height:auto;margin-top:1.4rem">
+        “Somewhere, something incredible is waiting to be known.”
+      </p>
+      <p style="color:var(--muted);font-weight:700;margin:0">— Carl Sagan, astronomer 🌌</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <span class="eyebrow amber">Your mission begins now</span>
+      <h2 style="margin:.9rem 0 .6rem">Ready to become a <span class="grad-text">Satellite Expert?</span></h2>
+      <p class="lead center">Four short pages. One big adventure. Let's go!</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="satellites.html"><span class="shimmer"></span>Launch Page 1 🛰️</a>
+        <a class="btn btn-ghost" href="fun-facts.html">Play the quiz 🎯</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:1rem">
+          <span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy
+        </a>
+        <p style="color:var(--muted);max-width:38ch;margin-top:1rem">A colourful little corner of the internet where kids can learn about the amazing machines that circle our planet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="satellites.html">What Are Satellites?</a>
+        <a href="history.html">History</a>
+        <a href="fun-facts.html">Fun Facts</a>
+        <a href="about.html">About Me</a>
+      </div>
+      <div>
+        <h4>Learn More</h4>
+        <a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA (opens in new tab)</a>
+        <a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a>
+        <a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Satellite Academy — a school science project. Space photos: NASA (public domain) · Photos: Unsplash</span>
+      <span class="made">Made with 💙 by Maya Chen · Grade 5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

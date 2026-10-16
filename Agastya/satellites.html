@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What Are Satellites? — Satellite Academy</title>
+<meta name="description" content="What is a human-made satellite? A simple, fun guide for kids: what's inside one, how it stays in orbit, and the jobs they do — telecom, TV, internet, navigation, weather, defence and science." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+<noscript><style>body{opacity:1 !important}</style></noscript>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>" />
+</head>
+<body>
+
+<div class="progress"></div>
+<canvas id="starfield"></canvas>
+<div class="nebula"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="cursor-glow"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="satellites.html" class="active">What Are Satellites?</a>
+      <a href="history.html">History</a>
+      <a href="fun-facts.html">Fun Facts</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <a class="nav-cta" href="fun-facts.html">Fun Zone ✦</a>
+    <button class="nav-toggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span> What Are Satellites?</div>
+    <span class="eyebrow reveal">🛰️ Page 1 of your mission</span>
+    <h1 class="h-sec reveal" style="--d:1">What <span class="grad-text">are</span> satellites?</h1>
+    <p class="lead reveal" style="--d:2">A satellite is a <b>machine that people build</b>, launch on a rocket, and leave circling the Earth. No wings, no pilot — just clever engineering, power from the Sun, and radio to talk to the ground.</p>
+    <div class="pill-row reveal" style="--d:3">
+      <span class="pill">🤖 Built by humans</span>
+      <span class="pill">🔁 Circles the Earth</span>
+      <span class="pill">📱 Carries calls &amp; internet</span>
+      <span class="pill">📺 Sends TV &amp; radio</span>
+      <span class="pill">🛡️ Guards countries</span>
+      <span class="pill">🔋 Powered by the Sun</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO SPLIT ============ -->
+<section>
+  <div class="wrap split">
+    <div class="split-media reveal-l">
+      <img src="img/satellite-over-earth.jpg" alt="A communications satellite floating in orbit high above Earth's clouds" loading="lazy" />
+      <span class="tag">🛰️ A satellite in orbit</span>
+    </div>
+    <div class="reveal-r">
+      <span class="eyebrow cyan">The big idea, made simple</span>
+      <h2 class="h-sec">A machine that <span class="grad-text">keeps falling</span>… and never lands</h2>
+      <p class="lead">Here's the clever bit. If you throw a ball, it curves down and hits the ground. Throw it harder and it travels farther before landing. Now imagine throwing it SO fast — about 27,600 kilometres per hour — that by the time it falls, the Earth has curved away underneath it.</p>
+      <p class="lead">It never lands. It just keeps falling around and around the planet. That endless, perfect fall is called an <b>orbit</b>.</p>
+      <div class="note cyan">
+        <span class="e">💡</span>
+        <p><b>Try this:</b> spin a ball on a long string in a circle. The string pulls it inward so it never flies away. For a satellite, <b>gravity</b> is the invisible string.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NATURAL VS HUMAN-MADE ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.6rem">
+      <span class="eyebrow pink reveal">Two kinds of satellite</span>
+      <h2 class="h-sec reveal">A <span class="grad-text">moon</span>… or a <span class="grad-text g2">machine?</span></h2>
+      <p class="lead reveal">The word "satellite" means anything that travels around something bigger. There are two kinds: the <b>natural</b> ones nature made (like the Moon) and the <b>human-made</b> ones we build and launch. This website is all about the machines!</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal-l" data-tilt>
+        <div class="ico">🌕</div>
+        <h3>Natural satellites</h3>
+        <p style="margin-bottom:1rem">They were already there — nobody built them.</p>
+        <ul class="tick">
+          <li><span class="ck">✓</span><span>The Moon, travelling around Earth</span></li>
+          <li><span class="ck">✓</span><span>Hundreds more around Jupiter, Saturn and other planets</span></li>
+          <li><span class="ck">✓</span><span>Born with the planets, made of rock and ice</span></li>
+          <li><span class="ck">✓</span><span>Usually enormous — you could never build one!</span></li>
+        </ul>
+      </div>
+      <div class="card reveal-r" data-tilt>
+        <div class="ico">🛰️</div>
+        <h3>Human-made satellites</h3>
+        <p style="margin-bottom:1rem">Designed by engineers, launched by rockets — the stars of this site.</p>
+        <ul class="tick">
+          <li><span class="ck">✓</span><span>Made in factories, then blasted into orbit</span></li>
+          <li><span class="ck">✓</span><span>Carry cameras, antennas, computers and solar panels</span></li>
+          <li><span class="ck">✓</span><span>Do jobs: telecom, TV, internet, maps, defence, science</span></li>
+          <li><span class="ck">✓</span><span>Over 12,800 of them circle Earth right now</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note reveal" style="max-width:880px;margin-inline:auto">
+      <span class="e">🧠</span>
+      <p><b>Remember:</b> when someone says "a satellite", they almost always mean the human-made kind — a machine in orbit. Send a text, watch a live match, pay by card, or check the weather, and a machine like this helped make it happen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANATOMY ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.4rem">
+      <span class="eyebrow amber reveal">Mission control tour</span>
+      <h2 class="h-sec reveal">What's <span class="grad-text g2">inside</span> a satellite?</h2>
+      <p class="lead reveal">Tap or hover the glowing dots to peek inside a real satellite. Each part has a very important job.</p>
+    </div>
+
+    <div class="anatomy reveal-scale">
+      <img src="img/tdrs-satellite.jpg" alt="A real communications relay satellite in orbit above Earth, showing its body, solar panels and dish antennas" loading="lazy" />
+
+      <div class="hotspot" style="left:20%;top:46%">1<span class="hot-tip"><b>Solar Panels ☀️</b>Big flat wings that catch sunlight and turn it into electricity. No batteries needed for years!</span></div>
+      <div class="hotspot" style="left:50%;top:40%">2<span class="hot-tip"><b>The Body (Bus) 📦</b>The main box. It holds the computer brain, the batteries, and all the clever electronics.</span></div>
+      <div class="hotspot" style="left:36%;top:38%">3<span class="hot-tip"><b>Big Dish Antenna 📡</b>Like ears and a mouth. It sends signals down to Earth and listens for new instructions.</span></div>
+      <div class="hotspot" style="left:69%;top:50%">4<span class="hot-tip"><b>Sensor &amp; Controls 🎛️</b>The eyes and ears. They measure exactly which way the satellite is pointing and send the data home.</span></div>
+      <div class="hotspot" style="left:50%;top:53%">5<span class="hot-tip"><b>Rocket Thruster 🚀</b>A tiny engine that gives gentle pushes to keep the satellite on the right path.</span></div>
+      <div class="hotspot" style="left:60%;top:70%">6<span class="hot-tip"><b>Second Dish Antenna 📡</b>One satellite often carries more than one dish, so it can talk to different places on Earth at the same time.</span></div>
+    </div>
+    <p class="center" style="color:var(--dim);font-size:.85rem;margin-top:1rem">Tip: on a phone, just tap a dot. ✨</p>
+  </div>
+</section>
+
+<!-- ============ TYPES (FLIP) ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.6rem">
+      <span class="eyebrow pink reveal">Not all satellites are the same</span>
+      <h2 class="h-sec reveal">The jobs <span class="grad-text">human-made</span> satellites do</h2>
+      <p class="lead reveal">Flip each card to meet a different kind of machine — the ones that carry your phone calls and TV, guide ships, guard countries, watch the weather and explore deep space.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="flip reveal" style="--d:0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🌦️</div><div class="q">Weather Watchers</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🌪️</div><p>They photograph clouds, oceans and storms from above. That's how we know a hurricane is coming <b>days before</b> it arrives — plenty of time to stay safe.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:1">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🧭</div><div class="q">Navigation (GPS)</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">📍</div><p>These satellites call out the time and their position. Your phone listens to several at once and does clever maths to show the little blue dot — <b>your exact spot on Earth!</b></p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:2">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">📡</div><div class="q">Telecom &amp; Internet</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🌐</div><p>Phone calls, texts, live video and internet all travel up to a satellite and back down. That's how a ship in the ocean, a plane over a desert or a village with no cables still gets online — and huge new "constellations" like Starlink beam fast internet everywhere on Earth.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:1">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">📺</div><div class="q">TV &amp; Radio Broadcast</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🎙️</div><p>One big broadcast satellite can send the very same TV channel or radio show to millions of homes at once — right across a whole continent, with no cables and no towers needed.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:2">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🛡️</div><div class="q">Military &amp; Defence</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">👁️</div><p>Countries use their own satellites to keep watch over borders, spot danger such as a rocket launch very early, and keep soldiers, ships and planes in touch. Grown-ups call these <b>reconnaissance</b> and <b>early-warning</b> satellites.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🔭</div><div class="q">Space Telescopes</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🌌</div><p>Up in space there's no air to blur the view. Telescopes like Hubble and James Webb take the clearest pictures ever of distant stars and galaxies.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:1">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🌳</div><div class="q">Earth Observation</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🐧</div><p>They keep an eye on forests, melting ice, farms, animal habitats and pollution. Scientists and farmers use the pictures to look after our beautiful planet.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:2">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🆘</div><div class="q">Rescue &amp; Safety</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🚒</div><p>They listen for emergency beacons from ships and planes in trouble, spot forest fires within minutes, and help rescuers find people lost at sea or in the mountains.</p></div>
+        </div>
+      </div>
+      <div class="flip reveal" style="--d:2">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><div class="big">🧑‍🚀</div><div class="q">Science Lab (ISS)</div><span class="hint">Flip me →</span></div>
+          <div class="flip-face flip-back"><div class="ico">🔬</div><p>The International Space Station is the biggest human-made satellite of all — a floating home and laboratory where astronauts live, sleep, exercise and run science experiments every single day.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORBIT HEIGHTS ============ -->
+<section>
+  <div class="wrap split">
+    <div class="reveal-l">
+      <span class="eyebrow lime">Up, up, up</span>
+      <h2 class="h-sec">How high do they <span class="grad-text g2">fly?</span></h2>
+      <p class="lead">Satellites don't all fly at the same height. The height decides how fast they go and what job they're best at.</p>
+      <ul class="tick">
+        <li><span class="ck">↓</span><span><b>Low Earth Orbit (160–2,000 km):</b> zooming fast, one lap every ~90 minutes. The ISS, most Earth-observers and the new internet constellations live here.</span></li>
+        <li><span class="ck">•</span><span><b>Medium Earth Orbit (~20,000 km):</b> the sweet spot for GPS navigation satellites and some defence systems.</span></li>
+        <li><span class="ck">↑</span><span><b>Geostationary (35,786 km):</b> so high that one lap takes exactly 24 hours — it seems to hang still in the sky. Perfect for TV broadcast, weather and big telecom satellites.</span></li>
+      </ul>
+      <div class="note">
+        <span class="e">🤯</span>
+        <p><b>643 × your plane ride:</b> a passenger jet flies about 10 km up. Geostationary satellites are nearly <b>3,600 times higher</b> than that!</p>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <div class="orbit-diagram">
+        <div class="earth"></div>
+        <div class="ring r1"><span class="moving"></span><span class="label" style="top:-26px">Low Earth Orbit</span></div>
+        <div class="ring r2"><span class="moving"></span><span class="label" style="bottom:-12px">Medium Orbit (GPS)</span></div>
+        <div class="ring r3"><span class="moving"></span><span class="label" style="top:-12px">Geostationary</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFE OF A SATELLITE ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.4rem">
+      <span class="eyebrow reveal">From build to launch</span>
+      <h2 class="h-sec reveal">The life of a <span class="grad-text">satellite</span></h2>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal" data-tilt style="--d:0"><div class="num">1</div><div class="ico">🛠️</div><h3>Build it</h3><p>Engineers design and carefully assemble thousands of tiny parts in a super-clean room.</p></div>
+      <div class="card reveal" data-tilt style="--d:1"><div class="num">2</div><div class="ico">🚀</div><h3>Launch it</h3><p>A rocket carries it up through the atmosphere and releases it into space.</p></div>
+      <div class="card reveal" data-tilt style="--d:2"><div class="num">3</div><div class="ico">📡</div><h3>Work it</h3><p>For years it circles the Earth, collecting information and beaming it home.</p></div>
+      <div class="card reveal" data-tilt style="--d:3"><div class="num">4</div><div class="ico">♻️</div><h3>Retire it</h3><p>When it's tired, it's steered to burn up safely or parked in a far-away "graveyard orbit".</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <span class="eyebrow amber">Next stop</span>
+      <h2 style="margin:.9rem 0 .6rem">Now you know <span class="grad-text">how</span> they fly.<br />Want to know <span class="grad-text g2">who</span> started it all?</h2>
+      <p class="lead center">Let's travel back to 1957 and meet the very first satellite ever launched.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="history.html"><span class="shimmer"></span>Travel to the past 🕰️</a>
+        <a class="btn btn-ghost" href="index.html">Back home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:1rem"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+        <p style="color:var(--muted);max-width:38ch;margin-top:1rem">A colourful little corner of the internet where kids can learn about the amazing machines that circle our planet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="satellites.html">What Are Satellites?</a>
+        <a href="history.html">History</a>
+        <a href="fun-facts.html">Fun Facts</a>
+        <a href="about.html">About Me</a>
+      </div>
+      <div>
+        <h4>Learn More</h4>
+        <a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA (opens in new tab)</a>
+        <a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a>
+        <a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Satellite Academy — a school science project. Space photos: NASA (public domain) · Photos: Unsplash</span>
+      <span class="made">Made with 💙 by Maya Chen · Grade 5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

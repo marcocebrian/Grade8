@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Cartoon avatar of Maya, a young space cadet in a helmet">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="22%" r="90%">
+      <stop offset="0" stop-color="#3b2a80"/>
+      <stop offset="55%" stop-color="#1b1440"/>
+      <stop offset="100%" stop-color="#0a0722"/>
+    </radialGradient>
+    <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cdd7ea"/>
+    </linearGradient>
+    <linearGradient id="helmet" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbe3f0"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="35%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#a5f3fc" stop-opacity="0.30"/>
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.28"/>
+    </radialGradient>
+    <clipPath id="faceClip"><circle cx="200" cy="192" r="66"/></clipPath>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <g fill="#ffffff" opacity="0.8">
+    <circle cx="52" cy="60" r="2.2"/><circle cx="120" cy="38" r="1.6"/>
+    <circle cx="330" cy="52" r="2"/><circle cx="360" cy="140" r="1.7"/>
+    <circle cx="40" cy="150" r="1.5"/><circle cx="286" cy="112" r="1.4"/>
+    <circle cx="96" cy="212" r="1.6"/><circle cx="350" cy="228" r="1.5"/>
+  </g>
+
+  <!-- little satellite -->
+  <g transform="translate(306 66) rotate(-18)" opacity="0.95">
+    <rect x="-22" y="-7" width="10" height="16" rx="2" fill="#22d3ee"/>
+    <rect x="12" y="-7" width="10" height="16" rx="2" fill="#22d3ee"/>
+    <rect x="-8" y="-9" width="16" height="20" rx="4" fill="#e2e8f0"/>
+    <rect x="-4" y="-5" width="8" height="8" rx="2" fill="#8b5cf6"/>
+  </g>
+  <path d="M330 40 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z" fill="#fbbf24"/>
+
+  <!-- suit / shoulders -->
+  <path d="M56 400 C56 322 118 288 200 288 C282 288 344 322 344 400 Z" fill="url(#suit)"/>
+  <rect x="166" y="244" width="68" height="62" rx="26" fill="#e6ecf7"/>
+
+  <!-- chest panel -->
+  <rect x="170" y="318" width="60" height="44" rx="12" fill="#dbe3f0" stroke="#b9c6dd" stroke-width="2"/>
+  <circle cx="185" cy="340" r="6.5" fill="#22d3ee"/>
+  <circle cx="200" cy="340" r="6.5" fill="#f472b6"/>
+  <circle cx="215" cy="340" r="6.5" fill="#fbbf24"/>
+  <circle cx="141" cy="330" r="13" fill="#8b5cf6"/>
+  <path d="M141 324 l2 4 4 2 -4 2 -2 4 -2 -4 -4 -2 4 -2 z" fill="#ffffff"/>
+  <circle cx="259" cy="330" r="13" fill="#0ea5e9"/>
+  <rect x="253" y="327" width="12" height="6" rx="1.5" fill="#ffffff"/>
+
+  <!-- helmet -->
+  <circle cx="200" cy="180" r="122" fill="url(#helmet)" stroke="#c3cee2" stroke-width="6"/>
+  <circle cx="200" cy="180" r="106" fill="#eef3fb"/>
+
+  <!-- face -->
+  <circle cx="200" cy="196" r="66" fill="#f6c9a4"/>
+  <g clip-path="url(#faceClip)">
+    <path d="M128 196 C128 140 160 112 200 112 C240 112 272 140 272 196 L272 168 C240 138 160 138 128 168 Z" fill="#432f22"/>
+    <path d="M128 172 C150 146 250 146 272 172 L272 150 C248 128 152 128 128 150 Z" fill="#33231a"/>
+  </g>
+  <!-- ears -->
+  <circle cx="136" cy="200" r="12" fill="#f0bd95"/>
+  <circle cx="264" cy="200" r="12" fill="#f0bd95"/>
+
+  <!-- eyes -->
+  <ellipse cx="177" cy="194" rx="6.5" ry="8.5" fill="#241a12"/>
+  <ellipse cx="223" cy="194" rx="6.5" ry="8.5" fill="#241a12"/>
+  <circle cx="179" cy="190" r="2.4" fill="#ffffff"/>
+  <circle cx="225" cy="190" r="2.4" fill="#ffffff"/>
+  <path d="M165 176 q12 -8 24 -1" stroke="#3b2a1e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M211 175 q12 -7 24 1" stroke="#3b2a1e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- blush -->
+  <ellipse cx="160" cy="210" rx="11" ry="7" fill="#f2908f" opacity="0.45"/>
+  <ellipse cx="240" cy="210" rx="11" ry="7" fill="#f2908f" opacity="0.45"/>
+  <!-- smile -->
+  <path d="M178 220 q22 20 44 0" stroke="#b23c3c" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- visor glass -->
+  <ellipse cx="200" cy="182" rx="102" ry="102" fill="url(#glass)"/>
+  <path d="M118 150 q26 -46 82 -54" stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- helmet base ring -->
+  <rect x="132" y="278" width="136" height="26" rx="13" fill="#cbd6e8"/>
+</svg>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The History of Satellites — Satellite Academy</title>
+<meta name="description" content="From Sputnik's first beep in 1957, through telecom, TV and spy satellites, to today's internet constellations — the amazing history of human-made satellites, told for kids." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+<noscript><style>body{opacity:1 !important}</style></noscript>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>" />
+</head>
+<body>
+
+<div class="progress"></div>
+<canvas id="starfield"></canvas>
+<div class="nebula"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="cursor-glow"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="satellites.html">What Are Satellites?</a>
+      <a href="history.html" class="active">History</a>
+      <a href="fun-facts.html">Fun Facts</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <a class="nav-cta" href="fun-facts.html">Fun Zone ✦</a>
+    <button class="nav-toggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span> History</div>
+    <span class="eyebrow amber reveal">🕰️ A journey through time</span>
+    <h1 class="h-sec reveal" style="--d:1">The story of <span class="grad-text g2">space machines</span></h1>
+    <p class="lead reveal" style="--d:2">Less than 70 years ago, nobody had ever seen a satellite. Now there are thousands. Let's travel back and watch it all happen — one giant leap at a time.</p>
+  </div>
+</section>
+
+<!-- ============ INTRO SPLIT ============ -->
+<section>
+  <div class="wrap split">
+    <div class="split-media reveal-l">
+      <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=1200&q=80" alt="A rocket lifting off with bright exhaust plumes" loading="lazy" />
+      <span class="tag">🚀 It all starts with a rocket</span>
+    </div>
+    <div class="reveal-r">
+      <span class="eyebrow">Once upon a time…</span>
+      <h2 class="h-sec">The beep that <span class="grad-text">changed everything</span></h2>
+      <p class="lead">On the 4th of October, 1957, a team far away launched a shiny metal ball the size of a beach ball into the sky. It was called <b>Sputnik 1</b>, and it did something no machine had ever done before — it went all the way around the Earth.</p>
+      <p class="lead">Radio fans all over the world tuned in and heard a soft, steady <b>“beep… beep… beep.”</b> That tiny sound meant one huge thing: humans could finally reach space.</p>
+      <div class="note cyan">
+        <span class="e">📻</span>
+        <p><b>Sputnik</b> was only 58 cm across and had four long antennas. It sent out radio beeps for 21 days before its batteries ran out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:3rem">
+      <span class="eyebrow pink reveal">The great timeline</span>
+      <h2 class="h-sec reveal">Milestones that <span class="grad-text">made history</span></h2>
+      <p class="lead reveal">Scroll down and watch the biggest moments come to life.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1957</div><h3>Sputnik 1 🛰️</h3>
+        <p>The very first satellite. A small metal sphere that beeped as it orbited the Earth every 96 minutes. The Space Age begins!</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1958</div><h3>Explorer 1 🔬</h3>
+        <p>The United States' first satellite. It carried a science experiment that discovered invisible radiation belts around Earth — now called the Van Allen belts.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1960</div><h3>TIROS-1 🌦️</h3>
+        <p>The first weather satellite. It sent back the first ever TV pictures of clouds seen from space — the beginning of modern weather forecasting.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1960s</div><h3>Secret eyes in the sky 👁️</h3>
+        <p>Governments began launching their own <b>reconnaissance satellites</b> to photograph other countries from orbit. These early spy satellites started a whole new chapter — satellites used for defence and security.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1962</div><h3>Telstar 1 📺</h3>
+        <p>The first satellite to send live television across the ocean. Millions of people watched pictures travel through space for the very first time.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1963</div><h3>Syncom 2 🛰️</h3>
+        <p>The first satellite to sit still in the sky. It flew so high and so fast that it matched Earth's spin exactly — an idea called <b>geostationary orbit</b>. Today that's exactly where most TV, weather and big telecom satellites live.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1978</div><h3>GPS is born 🧭</h3>
+        <p>The first satellites of the GPS system launched. Years later they would power the maps in phones and help cars, ships and planes find their way.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1990</div><h3>Hubble Space Telescope 🔭</h3>
+        <p>A giant telescope placed above the clouds and air. It took breathtaking pictures of stars, planets and galaxies, and it's still working today.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1990s</div><h3>Phones that work anywhere 📱</h3>
+        <p>Satellite-phone networks like Iridium put a constellation of machines in the sky so a call could be made from the middle of an ocean or a desert — places with no phone towers at all.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">1998</div><h3>Space Station building begins 🧩</h3>
+        <p>Countries around the world started joining modules together in orbit. Piece by piece, the International Space Station became the biggest satellite ever built.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">2015</div><h3>Rockets learn to land 🪂</h3>
+        <p>Rocket boosters began flying back to Earth and landing upright, ready to fly again. Space became cheaper and much more reusable.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">2019</div><h3>Internet constellations 🛰️🛰️🛰️</h3>
+        <p>Companies began launching thousands of small satellites working together as a team. These "constellations" — like Starlink — beam fast internet down to almost anywhere on the planet.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">2021</div><h3>James Webb Space Telescope 🌌</h3>
+        <p>The most powerful space telescope ever built launched. It peers back in time to see the very first galaxies — with a mirror the size of a tennis court net spread out in space.</p>
+      </div></div>
+
+      <div class="tl-item reveal"><span class="tl-dot"></span><div class="tl-card">
+        <div class="tl-year">Today</div><h3>12,800+ and counting 🚀</h3>
+        <p>Right now, thousands of human-made satellites circle the Earth — carrying our calls and TV, guiding us, watching the weather, keeping countries safe, and helping us understand our world better than ever before.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THEN VS NOW ============ -->
+<section>
+  <div class="wrap">
+    <div class="center" style="margin-bottom:2.6rem">
+      <span class="eyebrow lime reveal">Look how far we've come</span>
+      <h2 class="h-sec reveal">Then vs. <span class="grad-text g2">now</span></h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal-l" data-tilt>
+        <div class="ico">📻</div>
+        <h3>1957 — Sputnik 1</h3>
+        <p style="margin-bottom:1rem">A simple metal ball.</p>
+        <ul class="tick">
+          <li><span class="ck">✓</span><span>Size: about a beach ball (58 cm)</span></li>
+          <li><span class="ck">✓</span><span>Just 4 antennas and a radio beeper</span></li>
+          <li><span class="ck">✓</span><span>Batteries lasted only 21 days</span></li>
+          <li><span class="ck">✓</span><span>Could only say “beep”</span></li>
+        </ul>
+      </div>
+      <div class="card reveal-r" data-tilt>
+        <div class="ico">🛰️</div>
+        <h3>Today — Modern satellites</h3>
+        <p style="margin-bottom:1rem">Flying computers and cameras.</p>
+        <ul class="tick">
+          <li><span class="ck">✓</span><span>Some are as big as a bus with solar wings</span></li>
+          <li><span class="ck">✓</span><span>Powerful cameras and ultra-clear sensors</span></li>
+          <li><span class="ck">✓</span><span>Powered by the Sun for many years</span></li>
+          <li><span class="ck">✓</span><span>Send internet, phone calls, TV, maps and photos</span></li>
+          <li><span class="ck">✓</span><span>Used for telecom, broadcasting, defence, weather and science</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note reveal" style="max-width:820px;margin-inline:auto">
+      <span class="e">⏱️</span>
+      <p><b>Blink of an eye:</b> humans went from the first beeping satellite to livestreaming video from the Space Station in less time than your grandparents have been alive. Space travel is fast!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <span class="eyebrow pink">Ready for the fun part?</span>
+      <h2 style="margin:.9rem 0 .6rem">History is done — <span class="grad-text">let's play!</span></h2>
+      <p class="lead center">Time to flip some cards, spin the fact machine and test your new space knowledge.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="fun-facts.html"><span class="shimmer"></span>To the Fun Zone 🎉</a>
+        <a class="btn btn-ghost" href="satellites.html">Review satellites</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:1rem"><span class="brand-orbit"><span class="brand-dot"></span></span> Satellite Academy</a>
+        <p style="color:var(--muted);max-width:38ch;margin-top:1rem">A colourful little corner of the internet where kids can learn about the amazing machines that circle our planet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="satellites.html">What Are Satellites?</a>
+        <a href="history.html">History</a>
+        <a href="fun-facts.html">Fun Facts</a>
+        <a href="about.html">About Me</a>
+      </div>
+      <div>
+        <h4>Learn More</h4>
+        <a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA (opens in new tab)</a>
+        <a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a>
+        <a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Satellite Academy — a school science project. Space photos: NASA (public domain) · Photos: Unsplash</span>
+      <span class="made">Made with 💙 by Maya Chen · Grade 5</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
