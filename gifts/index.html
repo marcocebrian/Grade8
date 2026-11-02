@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ascend International School · Welcome Gift Ideas</title>
+<meta name="description" content="Gift ideas for prospective families visiting Ascend International School, Mumbai.">
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2E2F52;--deep:#24486C;--mid:#30609C;--bright:#2490CC;--aqua:#90CCD8;--ink:#1d2236;--muted:#5b6378;--line:#dfe5ee;--paper:#f7f9fb;
+ --serif:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.5}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;color:var(--navy)}
+.eyebrow{font:500 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bright)}
+
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.bar img{height:34px}
+.bar nav{display:flex;gap:14px;margin-left:auto;font-size:14px;white-space:nowrap}
+.bar nav a{text-decoration:none;color:var(--muted)}
+.bar nav a:hover{color:var(--navy)}
+.shortbtn{border:1px solid var(--navy);background:var(--navy);color:#fff;border-radius:999px;padding:7px 14px;font:500 13px var(--sans);cursor:pointer;white-space:nowrap}
+.shortbtn.on{background:#fff;color:var(--navy)}
+
+.hero{background:var(--navy);color:#fff}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-top:64px;padding-bottom:64px}
+.hero h1{color:#fff;font-size:clamp(40px,5vw,64px);margin:12px 0 16px}
+.hero p{color:#d5dcea;font-size:18px;margin:0;max-width:460px}
+.hero .eyebrow{color:var(--aqua)}
+.hero img{border-radius:18px;aspect-ratio:1;object-fit:cover}
+.palette{display:flex;gap:6px;margin-top:28px}
+.palette i{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.25)}
+
+section{padding:64px 0}
+.sec-title{margin-bottom:28px}
+.sec-title h2{font-size:clamp(30px,3.4vw,42px);margin-top:6px}
+
+.picks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pick{text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pick img{aspect-ratio:1;object-fit:cover}
+.pick div{padding:14px 16px}
+.pick b{font:600 13px var(--sans);color:var(--bright)}
+.pick h3{font-size:21px;margin-top:2px}
+
+.cat{border-top:1px solid var(--line)}
+.cat:nth-of-type(even){background:#fff}
+.cat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.cat-head .num{font:600 44px var(--serif);color:var(--aqua);line-height:1}
+.cat-head h2{font-size:clamp(28px,3vw,38px)}
+.ideas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.idea{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.cat:nth-of-type(even) .idea{background:var(--paper)}
+.idea.rec{border-color:var(--bright);box-shadow:0 0 0 1px var(--bright)}
+.idea img{aspect-ratio:1;object-fit:cover}
+.idea .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.idea h3{font-size:23px}
+.idea p{margin:6px 0 12px;font-size:15px;color:var(--muted)}
+.tag{position:absolute;top:12px;left:12px;background:var(--bright);color:#fff;font:700 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.star{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.92);cursor:pointer;color:var(--muted);font-size:17px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.star[aria-pressed=true]{background:var(--navy);color:#fff}
+.note{margin-top:16px;font-size:13px;color:var(--muted)}
+body.filter .idea:not(.picked){display:none}
+body.filter .cat:not(.has-pick),body.filter .hide-in-filter{display:none}
+
+.extras{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.extras img{border-radius:18px}
+.extras ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.extras li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:15px}
+
+
+footer{background:var(--navy);color:#b8c3d8;padding:32px 0;font-size:15px;letter-spacing:.04em}
+footer .wrap{text-align:center}
+
+@media screen and (max-width:900px){
+ .hero .wrap,.extras{grid-template-columns:1fr}
+ .ideas,.picks{grid-template-columns:1fr 1fr}
+ .bar nav{display:none}
+ .shortbtn{margin-left:auto}
+}
+@media screen and (max-width:560px){.ideas,.extras ul{grid-template-columns:1fr}}
+@media print{
+ @page{size:A4 landscape;margin:10mm}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .bar,.star,.no-print{display:none!important}
+ .wrap{max-width:none;padding:0 6px}
+ section{padding:18px 0}
+ .hero{min-height:186mm;display:flex;align-items:center}
+ .hero .wrap{width:100%;padding:24px 36px}
+ .hero img{max-height:160mm;width:auto}
+ #picks,.cat,#extras{break-before:page}
+ .ideas{gap:12px}
+ .idea img{aspect-ratio:auto;height:96mm;width:100%}
+ .idea .body{padding:10px 14px}
+ .idea h3{font-size:19px}.idea p{font-size:10pt;margin:3px 0 6px}
+ .cat-head{margin-bottom:10px}
+ .pick img{height:110mm;width:100%;aspect-ratio:auto}
+ .extras img{max-height:150mm;width:auto}
+ .idea,.pick{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+ <div class="wrap">
+  <img src="assets/ascend-logo.jpg" alt="Ascend International School">
+ </div>
+</header>
+
+<div class="hero">
+ <div class="wrap">
+  <div>
+   <div class="eyebrow">Admissions · Welcome gifts</div>
+   <h1>Something to take home from Ascend</h1>
+   <p>Gift ideas for families visiting our campus, built on the five-figure Ascend logo and its blues.</p>
+   <div class="palette"><i style="background:#2E2F52"></i><i style="background:#24486C"></i><i style="background:#30609C"></i><i style="background:#2490CC"></i><i style="background:#90CCD8"></i></div>
+  </div>
+  <img src="assets/img/hero.jpg" alt="Ascend welcome gift set">
+ </div>
+</div>
+
+<section class="hide-in-filter" id="picks">
+ <div class="wrap">
+  <div class="sec-title"><div class="eyebrow">If we present four</div><h2>Recommended shortlist</h2></div>
+  <div class="picks" id="picksgrid"></div>
+ </div>
+</section>
+
+<main id="cats"></main>
+
+<section class="hide-in-filter" id="extras" style="background:#fff;border-top:1px solid var(--line)">
+ <div class="wrap extras">
+  <img src="assets/img/extras.jpg" alt="Extra gift ideas">
+  <div>
+   <div class="sec-title"><div class="eyebrow">Small touches</div><h2>Extra gift ideas</h2></div>
+   <ul>
+    <li>Seed-paper thank-you card</li><li>Wooden 5-figure puzzle</li>
+    <li>“Future Ascender” bag tag</li><li>Activity &amp; sticker booklet</li>
+    <li>Handwritten student postcard</li><li>Engraved steel bottle</li>
+    <li>Mini plant in a terracotta pot</li><li>Virtual-tour QR card</li>
+    <li>Cotton tote to carry it all</li><li>Family photo at reception</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+
+<footer>
+ <div class="wrap"><span>Ideation by MYP Design Department 2027</span></div>
+</footer>
+
+<script>
+const CATS=[
+["Pen topper that moves",[
+ ["Pinwheel Spinner","The logo becomes a pinwheel that kids can blow or flick to spin.",1],
+ ["Bobbing Ascender","A logo figure on a spring that wobbles. Collect all five colours."],
+ ["Climb-Up Slider","A bead slides up the IB stages: PYP, MYP, DP."]]],
+["Christmas ornament",[
+ ["Layered Acrylic Pinwheel","Five blue acrylic layers with a 3D effect, dated every year.",1],
+ ["Brass Star of Five","A polished brass silhouette in a velvet pouch."],
+ ["Clear Glass Bauble","A white logo with aqua confetti inside."]]],
+["Car scent ornament",[
+ ["Terracotta Diffuser","Handmade clay disc with refillable essential oil.",1],
+ ["Aluminium Vent Clip","Navy metal clip with three scent refills."],
+ ["Felt Figures Charm","Five wool figures that hold the scent."]]],
+["Visit-planner notebook",[
+ ["The Visit Companion","Linen A5 with tour checklist, map, IB guide and notes.",1],
+ ["Plan · Visit · Decide","Three pocket notebooks for each step of the decision."],
+ ["Flip Book for Two","Parent planner on one side, child's drawing book on the other."]]],
+["Stationery box",[
+ ["Learner Profile Box","Ten pencils, one per IB Learner Profile trait.",1],
+ ["Grow-with-Us Eco Kit","Seed pencils, recycled notebook, bamboo ruler."],
+ ["Young Explorer Kit","Magnifier, compass, field notebook, pencils."]]],
+["Ascend pouch",[
+ ["Logo-Pattern Canvas","Cheerful all-over logo print with a brass zip."],
+ ["Vegan Leather Tech","Cable organiser with a subtle debossed logo."],
+ ["Hand Block-Printed","Indian artisan block print in indigo and aqua.",1]]],
+["Ascend sweets",[
+ ["Ascend Mint Tin","Embossed navy tin with sugar-free mints.",1],
+ ["Swirl Lollipop","A blue pinwheel swirl tagged “for a future Ascender”."],
+ ["Chocolate & Chikki","A local chocolate bar or sesame chikki in an Ascend wrapper."]]],
+["Baby bib",[
+ ["Silicone Pocket Bib","Catches crumbs, wipe-clean, travels rolled up."],
+ ["Muslin Bandana Bib","Soft organic cotton, set of two."],
+ ["“Class of 2044” Smock","Covers the clothes fully. “Future Ascender” print.",1]]]
+];
+const PICKS=[[0,0],[3,0],[4,0],[7,2]];
+const L="ABC",$=s=>document.querySelector(s);
+$("#picksgrid").innerHTML=PICKS.map(([c,i],k)=>`<div class="pick"><img src="assets/img/${c+1}${L[i]}.jpg" alt="" loading="lazy"><div><b>0${k+1} · Idea ${c+1}${L[i]}</b><h3>${CATS[c][1][i][0]}</h3></div></div>`).join("");
+$("#cats").innerHTML=CATS.map(([t,items],c)=>`<section class="cat" id="c${c+1}"><div class="wrap">
+ <div class="cat-head"><span class="num">0${c+1}</span><h2>${t}</h2></div>
+ <div class="ideas">${items.map(([n,d,rec],i)=>{const k=`${c+1}${L[i]}`;return `<article class="idea${rec?" rec":""}" data-key="${k}" data-name="${n}">
+  <img src="assets/img/${k}.jpg" alt="${n}" loading="lazy">${rec?'<span class="tag">Recommended</span>':""}
+  <div class="body"><h3>${k} · ${n}</h3><p>${d}</p></div></article>`}).join("")}</div>
+</div></section>`).join("");
+
+</script>
+</body>
+</html>
